@@ -1,3 +1,4 @@
+Afghanistan
 Albania
 Algeria
 American Samoa
@@ -23,6 +24,7 @@ Brazil
 Bulgaria
 Burkina Faso
 Burundi
+Cambodia
 Cameroon
 Canada
 Cape Verde
@@ -32,13 +34,14 @@ Chile
 Chinese Taipei
 Colombia
 Congo
+Cook Islands
 Costa Rica
 Croatia
 Cuba
 Cyprus
 Czech Republic
 Czechoslovakia
-CÃ´te d'Ivoire
+Côte d'Ivoire
 Democratic People's Republic of Korea
 Democratic Republic of the Congo
 Denmark
@@ -50,12 +53,14 @@ El Salvador
 Eritrea
 Estonia
 Ethiopia
+Federal Republic of Germany
 Federated States of Micronesia
 Fiji
 Finland
 France
 Gabon
 Georgia
+German Democratic Republic (Germany)
 Germany
 Ghana
 Great Britain
@@ -90,10 +95,13 @@ Kuwait
 Kyrgyzstan
 Latvia
 Lebanon
+Lesotho
 Liberia
 Lithuania
 Luxembourg
 Madagascar
+Malawi
+Malaya
 Malaysia
 Mali
 Malta
@@ -107,10 +115,12 @@ Mozambique
 Myanmar
 Namibia
 Nauru
+Nepal
 Netherlands
 Netherlands Antilles
 New Zealand
 Nicaragua
+Niger
 Nigeria
 North Macedonia
 Norway
@@ -131,9 +141,11 @@ Refugee Olympic Athletes
 Refugee Olympic Team
 Republic of Korea
 Republic of Moldova
+Rhodesia
 Romania
 Russian Federation
 Rwanda
+Saar
 Saint Kitts and Nevis
 Saint Lucia
 Samoa
@@ -150,6 +162,7 @@ Slovenia
 Solomon Islands
 Somalia
 South Africa
+Soviet Union
 Spain
 Sri Lanka
 Sudan
@@ -172,6 +185,7 @@ Uganda
 Ukraine
 Unified Team
 United Arab Emirates
+United Arab Republic
 United Republic of Tanzania
 United States of America
 Uruguay
@@ -179,5 +193,7 @@ Uzbekistan
 Venezuela
 Vietnam
 Virgin Islands, British
+West Indies Federation
+Yugoslavia
 Zambia
 Zimbabwe
