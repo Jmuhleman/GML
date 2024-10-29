@@ -1,0 +1,971 @@
+country_name,slug_game,rank_position
+Albania,barcelona-1992,1
+Albania,beijing-2008,2
+Albania,london-2012,3
+Albania,rio-2016,2
+Albania,sydney-2000,1
+Albania,tokyo-2020,2
+Algeria,athens-2004,11
+Algeria,atlanta-1996,11
+Algeria,barcelona-1992,14
+Algeria,beijing-2008,11
+Algeria,london-2012,6
+Algeria,rio-2016,13
+Algeria,sydney-2000,11
+Algeria,tokyo-2020,9
+American Samoa,barcelona-1992,2
+Andorra,london-2012,1
+Angola,athens-2004,1
+Angola,atlanta-1996,1
+Angola,barcelona-1992,1
+Angola,london-2012,2
+Angola,rio-2016,2
+Angola,sydney-2000,1
+Angola,tokyo-2020,1
+Argentina,athens-2004,17
+Argentina,atlanta-1996,18
+Argentina,barcelona-1992,12
+Argentina,beijing-2008,12
+Argentina,london-2012,16
+Argentina,rio-2016,19
+Argentina,sydney-2000,20
+Argentina,tokyo-2020,17
+Armenia,athens-2004,9
+Armenia,atlanta-1996,17
+Armenia,beijing-2008,11
+Armenia,london-2012,7
+Armenia,rio-2016,13
+Armenia,sydney-2000,7
+Armenia,tokyo-2020,9
+Aruba,rio-2016,1
+Australia,athens-2004,128
+Australia,atlanta-1996,105
+Australia,barcelona-1992,78
+Australia,beijing-2008,123
+Australia,london-2012,107
+Australia,rio-2016,122
+Australia,sydney-2000,144
+Australia,tokyo-2020,115
+Austria,athens-2004,18
+Austria,atlanta-1996,17
+Austria,barcelona-1992,22
+Austria,beijing-2008,26
+Austria,london-2012,16
+Austria,rio-2016,15
+Austria,sydney-2000,23
+Austria,tokyo-2020,22
+Azerbaijan,athens-2004,19
+Azerbaijan,atlanta-1996,8
+Azerbaijan,beijing-2008,15
+Azerbaijan,london-2012,27
+Azerbaijan,rio-2016,30
+Azerbaijan,sydney-2000,18
+Azerbaijan,tokyo-2020,16
+Bahamas,athens-2004,7
+Bahamas,atlanta-1996,6
+Bahamas,barcelona-1992,2
+Bahamas,beijing-2008,6
+Bahamas,london-2012,6
+Bahamas,rio-2016,5
+Bahamas,sydney-2000,9
+Bahamas,tokyo-2020,4
+Bahrain,beijing-2008,3
+Bahrain,london-2012,4
+Bahrain,rio-2016,7
+Bahrain,tokyo-2020,5
+Bangladesh,tokyo-2020,1
+Barbados,athens-2004,2
+Barbados,atlanta-1996,2
+Barbados,barcelona-1992,1
+Barbados,beijing-2008,2
+Barbados,london-2012,1
+Barbados,sydney-2000,2
+Belarus,athens-2004,54
+Belarus,atlanta-1996,54
+Belarus,beijing-2008,45
+Belarus,london-2012,44
+Belarus,rio-2016,34
+Belarus,sydney-2000,52
+Belarus,tokyo-2020,33
+Belgium,athens-2004,9
+Belgium,atlanta-1996,19
+Belgium,barcelona-1992,24
+Belgium,beijing-2008,14
+Belgium,london-2012,20
+Belgium,rio-2016,20
+Belgium,sydney-2000,19
+Belgium,tokyo-2020,33
+Benin,rio-2016,1
+Bermuda,athens-2004,1
+Bermuda,atlanta-1996,1
+Bermuda,barcelona-1992,1
+Bermuda,sydney-2000,1
+Bosnia and Herzegovina,barcelona-1992,1
+Bosnia and Herzegovina,beijing-2008,1
+Bosnia and Herzegovina,rio-2016,1
+Bosnia and Herzegovina,sydney-2000,1
+Bosnia and Herzegovina,tokyo-2020,2
+Botswana,athens-2004,2
+Botswana,beijing-2008,3
+Botswana,london-2012,2
+Botswana,rio-2016,2
+Botswana,sydney-2000,1
+Botswana,tokyo-2020,3
+Brazil,athens-2004,29
+Brazil,atlanta-1996,33
+Brazil,barcelona-1992,21
+Brazil,beijing-2008,36
+Brazil,london-2012,48
+Brazil,rio-2016,85
+Brazil,sydney-2000,29
+Brazil,tokyo-2020,55
+Bulgaria,athens-2004,33
+Bulgaria,atlanta-1996,40
+Bulgaria,barcelona-1992,53
+Bulgaria,beijing-2008,17
+Bulgaria,london-2012,14
+Bulgaria,rio-2016,18
+Bulgaria,sydney-2000,24
+Bulgaria,tokyo-2020,19
+Burkina Faso,london-2012,1
+Burkina Faso,sydney-2000,1
+Burkina Faso,tokyo-2020,1
+Burundi,atlanta-1996,2
+Burundi,london-2012,1
+Burundi,rio-2016,1
+Burundi,sydney-2000,1
+Burundi,tokyo-2020,2
+Cameroon,athens-2004,5
+Cameroon,atlanta-1996,2
+Cameroon,beijing-2008,3
+Cameroon,london-2012,4
+Cameroon,rio-2016,2
+Cameroon,sydney-2000,2
+Cameroon,tokyo-2020,3
+Canada,athens-2004,57
+Canada,atlanta-1996,71
+Canada,barcelona-1992,77
+Canada,beijing-2008,69
+Canada,london-2012,59
+Canada,rio-2016,75
+Canada,sydney-2000,73
+Canada,tokyo-2020,90
+Cape Verde,london-2012,1
+Cape Verde,rio-2016,1
+Cape Verde,tokyo-2020,2
+Cayman Islands,beijing-2008,1
+Central African Republic,rio-2016,1
+Chile,athens-2004,3
+Chile,barcelona-1992,1
+Chile,beijing-2008,2
+Chile,london-2012,3
+Chile,rio-2016,3
+Chile,sydney-2000,2
+Chile,tokyo-2020,4
+Chinese Taipei,athens-2004,16
+Chinese Taipei,atlanta-1996,14
+Chinese Taipei,barcelona-1992,1
+Chinese Taipei,beijing-2008,13
+Chinese Taipei,london-2012,16
+Chinese Taipei,rio-2016,16
+Chinese Taipei,sydney-2000,14
+Chinese Taipei,tokyo-2020,30
+Colombia,athens-2004,16
+Colombia,atlanta-1996,3
+Colombia,barcelona-1992,5
+Colombia,beijing-2008,21
+Colombia,london-2012,15
+Colombia,rio-2016,26
+Colombia,sydney-2000,7
+Colombia,tokyo-2020,16
+Congo,rio-2016,1
+Costa Rica,athens-2004,3
+Costa Rica,atlanta-1996,2
+Costa Rica,barcelona-1992,1
+Costa Rica,sydney-2000,2
+Costa Rica,tokyo-2020,1
+Croatia,athens-2004,17
+Croatia,atlanta-1996,13
+Croatia,barcelona-1992,11
+Croatia,beijing-2008,18
+Croatia,london-2012,17
+Croatia,rio-2016,20
+Croatia,sydney-2000,12
+Croatia,tokyo-2020,21
+Cuba,athens-2004,51
+Cuba,atlanta-1996,62
+Cuba,barcelona-1992,71
+Cuba,beijing-2008,56
+Cuba,london-2012,45
+Cuba,rio-2016,39
+Cuba,sydney-2000,69
+Cuba,tokyo-2020,34
+Cyprus,athens-2004,1
+Cyprus,atlanta-1996,2
+Cyprus,beijing-2008,3
+Cyprus,london-2012,2
+Cyprus,rio-2016,4
+Cyprus,sydney-2000,2
+Cyprus,tokyo-2020,3
+Czech Republic,athens-2004,34
+Czech Republic,atlanta-1996,32
+Czech Republic,beijing-2008,31
+Czech Republic,london-2012,36
+Czech Republic,rio-2016,30
+Czech Republic,sydney-2000,30
+Czech Republic,tokyo-2020,25
+Czechoslovakia,barcelona-1992,45
+Côte d'Ivoire,tokyo-2020,3
+Democratic People's Republic of Korea,athens-2004,15
+Democratic People's Republic of Korea,atlanta-1996,9
+Democratic People's Republic of Korea,barcelona-1992,23
+Democratic People's Republic of Korea,beijing-2008,15
+Democratic People's Republic of Korea,london-2012,18
+Democratic People's Republic of Korea,rio-2016,18
+Democratic People's Republic of Korea,sydney-2000,13
+Democratic Republic of the Congo,barcelona-1992,1
+Democratic Republic of the Congo,london-2012,1
+Democratic Republic of the Congo,tokyo-2020,2
+Denmark,athens-2004,29
+Denmark,atlanta-1996,34
+Denmark,barcelona-1992,26
+Denmark,beijing-2008,23
+Denmark,london-2012,40
+Denmark,rio-2016,34
+Denmark,sydney-2000,29
+Denmark,tokyo-2020,32
+Djibouti,rio-2016,1
+Djibouti,tokyo-2020,1
+Dominican Republic,athens-2004,5
+Dominican Republic,atlanta-1996,2
+Dominican Republic,barcelona-1992,3
+Dominican Republic,beijing-2008,7
+Dominican Republic,london-2012,7
+Dominican Republic,rio-2016,4
+Dominican Republic,sydney-2000,2
+Dominican Republic,tokyo-2020,12
+Ecuador,athens-2004,2
+Ecuador,atlanta-1996,2
+Ecuador,beijing-2008,5
+Ecuador,london-2012,11
+Ecuador,rio-2016,7
+Ecuador,sydney-2000,2
+Ecuador,tokyo-2020,10
+Egypt,athens-2004,8
+Egypt,atlanta-1996,4
+Egypt,beijing-2008,13
+Egypt,london-2012,22
+Egypt,rio-2016,20
+Egypt,sydney-2000,8
+Egypt,tokyo-2020,27
+El Salvador,atlanta-1996,1
+El Salvador,beijing-2008,2
+El Salvador,rio-2016,2
+Eritrea,athens-2004,2
+Eritrea,beijing-2008,3
+Eritrea,london-2012,2
+Eritrea,rio-2016,4
+Eritrea,tokyo-2020,1
+Estonia,athens-2004,7
+Estonia,atlanta-1996,10
+Estonia,barcelona-1992,11
+Estonia,beijing-2008,6
+Estonia,london-2012,5
+Estonia,rio-2016,11
+Estonia,sydney-2000,9
+Estonia,tokyo-2020,6
+Ethiopia,athens-2004,15
+Ethiopia,atlanta-1996,6
+Ethiopia,barcelona-1992,5
+Ethiopia,beijing-2008,15
+Ethiopia,london-2012,18
+Ethiopia,rio-2016,15
+Ethiopia,sydney-2000,16
+Ethiopia,tokyo-2020,15
+Federated States of Micronesia,athens-2004,1
+Federated States of Micronesia,london-2012,1
+Federated States of Micronesia,rio-2016,1
+Fiji,barcelona-1992,1
+Fiji,london-2012,1
+Fiji,sydney-2000,2
+Finland,athens-2004,10
+Finland,atlanta-1996,17
+Finland,barcelona-1992,29
+Finland,beijing-2008,13
+Finland,london-2012,14
+Finland,rio-2016,8
+Finland,sydney-2000,11
+Finland,tokyo-2020,11
+France,athens-2004,103
+France,atlanta-1996,98
+France,barcelona-1992,102
+France,beijing-2008,110
+France,london-2012,104
+France,rio-2016,114
+France,sydney-2000,114
+France,tokyo-2020,107
+Gabon,atlanta-1996,1
+Gabon,london-2012,1
+Gabon,rio-2016,2
+Georgia,athens-2004,14
+Georgia,atlanta-1996,16
+Georgia,beijing-2008,14
+Georgia,london-2012,15
+Georgia,rio-2016,19
+Georgia,sydney-2000,13
+Georgia,tokyo-2020,21
+Germany,athens-2004,145
+Germany,atlanta-1996,196
+Germany,barcelona-1992,193
+Germany,beijing-2008,122
+Germany,london-2012,136
+Germany,rio-2016,122
+Germany,sydney-2000,175
+Germany,tokyo-2020,130
+Ghana,athens-2004,3
+Ghana,atlanta-1996,2
+Ghana,barcelona-1992,2
+Ghana,beijing-2008,2
+Ghana,london-2012,1
+Ghana,sydney-2000,3
+Ghana,tokyo-2020,3
+Great Britain,athens-2004,96
+Great Britain,atlanta-1996,67
+Great Britain,barcelona-1992,94
+Great Britain,beijing-2008,116
+Great Britain,london-2012,142
+Great Britain,rio-2016,134
+Great Britain,sydney-2000,90
+Great Britain,tokyo-2020,144
+Greece,athens-2004,67
+Greece,atlanta-1996,27
+Greece,barcelona-1992,16
+Greece,beijing-2008,20
+Greece,london-2012,13
+Greece,rio-2016,13
+Greece,sydney-2000,28
+Greece,tokyo-2020,19
+Grenada,athens-2004,1
+Grenada,london-2012,1
+Grenada,rio-2016,3
+Grenada,tokyo-2020,2
+Guam,london-2012,1
+Guatemala,athens-2004,1
+Guatemala,atlanta-1996,2
+Guatemala,barcelona-1992,1
+Guatemala,london-2012,4
+Guatemala,rio-2016,3
+Guatemala,sydney-2000,1
+Guatemala,tokyo-2020,2
+Guinea-Bissau,london-2012,1
+Guinea-Bissau,rio-2016,1
+Guyana,barcelona-1992,1
+Guyana,rio-2016,1
+Haiti,sydney-2000,1
+Haiti,tokyo-2020,1
+Honduras,london-2012,2
+Honduras,rio-2016,1
+Honduras,sydney-2000,1
+"Hong Kong, China",athens-2004,10
+"Hong Kong, China",atlanta-1996,5
+"Hong Kong, China",barcelona-1992,6
+"Hong Kong, China",beijing-2008,9
+"Hong Kong, China",london-2012,10
+"Hong Kong, China",rio-2016,12
+"Hong Kong, China",sydney-2000,2
+"Hong Kong, China",tokyo-2020,14
+Hungary,athens-2004,57
+Hungary,atlanta-1996,66
+Hungary,barcelona-1992,82
+Hungary,beijing-2008,45
+Hungary,london-2012,50
+Hungary,rio-2016,50
+Hungary,sydney-2000,52
+Hungary,tokyo-2020,56
+Iceland,athens-2004,2
+Iceland,barcelona-1992,2
+Iceland,beijing-2008,1
+Iceland,london-2012,2
+Iceland,rio-2016,2
+Iceland,sydney-2000,3
+Independent Olympic Athletes,barcelona-1992,14
+Independent Olympic Athletes,rio-2016,3
+India,athens-2004,14
+India,atlanta-1996,3
+India,barcelona-1992,7
+India,beijing-2008,12
+India,london-2012,24
+India,rio-2016,19
+India,sydney-2000,10
+India,tokyo-2020,25
+Indonesia,athens-2004,12
+Indonesia,atlanta-1996,17
+Indonesia,barcelona-1992,15
+Indonesia,beijing-2008,11
+Indonesia,london-2012,11
+Indonesia,rio-2016,12
+Indonesia,sydney-2000,14
+Indonesia,tokyo-2020,14
+Iraq,athens-2004,3
+Iraq,barcelona-1992,3
+Iraq,london-2012,1
+Iraq,rio-2016,1
+Ireland,athens-2004,4
+Ireland,atlanta-1996,11
+Ireland,barcelona-1992,8
+Ireland,beijing-2008,10
+Ireland,london-2012,14
+Ireland,rio-2016,17
+Ireland,sydney-2000,4
+Ireland,tokyo-2020,16
+Islamic Republic of Iran,athens-2004,13
+Islamic Republic of Iran,atlanta-1996,8
+Islamic Republic of Iran,barcelona-1992,13
+Islamic Republic of Iran,beijing-2008,15
+Islamic Republic of Iran,london-2012,20
+Islamic Republic of Iran,rio-2016,18
+Islamic Republic of Iran,sydney-2000,14
+Islamic Republic of Iran,tokyo-2020,18
+Israel,athens-2004,6
+Israel,atlanta-1996,5
+Israel,barcelona-1992,7
+Israel,beijing-2008,4
+Israel,london-2012,9
+Israel,rio-2016,7
+Israel,sydney-2000,10
+Israel,tokyo-2020,24
+Italy,athens-2004,88
+Italy,atlanta-1996,91
+Italy,barcelona-1992,78
+Italy,beijing-2008,87
+Italy,london-2012,82
+Italy,rio-2016,88
+Italy,sydney-2000,94
+Italy,tokyo-2020,118
+Ivory Coast,atlanta-1996,1
+Ivory Coast,barcelona-1992,1
+Ivory Coast,beijing-2008,1
+Ivory Coast,london-2012,2
+Ivory Coast,rio-2016,4
+Jamaica,athens-2004,17
+Jamaica,atlanta-1996,15
+Jamaica,barcelona-1992,10
+Jamaica,beijing-2008,25
+Jamaica,london-2012,22
+Jamaica,rio-2016,21
+Jamaica,sydney-2000,16
+Jamaica,tokyo-2020,25
+Japan,athens-2004,83
+Japan,atlanta-1996,72
+Japan,barcelona-1992,69
+Japan,beijing-2008,85
+Japan,london-2012,92
+Japan,rio-2016,83
+Japan,sydney-2000,69
+Japan,tokyo-2020,126
+Jordan,london-2012,1
+Jordan,rio-2016,1
+Jordan,tokyo-2020,2
+Kazakhstan,athens-2004,27
+Kazakhstan,atlanta-1996,26
+Kazakhstan,beijing-2008,35
+Kazakhstan,london-2012,32
+Kazakhstan,rio-2016,40
+Kazakhstan,sydney-2000,35
+Kazakhstan,tokyo-2020,25
+Kenya,athens-2004,15
+Kenya,atlanta-1996,20
+Kenya,barcelona-1992,19
+Kenya,beijing-2008,28
+Kenya,london-2012,24
+Kenya,rio-2016,25
+Kenya,sydney-2000,17
+Kenya,tokyo-2020,22
+Kiribati,london-2012,1
+Kosovo,rio-2016,2
+Kosovo,tokyo-2020,5
+Kuwait,athens-2004,3
+Kuwait,atlanta-1996,1
+Kuwait,beijing-2008,2
+Kuwait,london-2012,2
+Kuwait,sydney-2000,3
+Kuwait,tokyo-2020,3
+Kyrgyzstan,athens-2004,1
+Kyrgyzstan,atlanta-1996,5
+Kyrgyzstan,beijing-2008,6
+Kyrgyzstan,london-2012,1
+Kyrgyzstan,rio-2016,6
+Kyrgyzstan,sydney-2000,9
+Kyrgyzstan,tokyo-2020,8
+Latvia,athens-2004,9
+Latvia,atlanta-1996,10
+Latvia,barcelona-1992,7
+Latvia,beijing-2008,6
+Latvia,london-2012,8
+Latvia,rio-2016,6
+Latvia,sydney-2000,10
+Latvia,tokyo-2020,4
+Lebanon,barcelona-1992,1
+Lebanon,beijing-2008,1
+Lebanon,tokyo-2020,1
+Liberia,tokyo-2020,1
+Lithuania,athens-2004,14
+Lithuania,atlanta-1996,14
+Lithuania,barcelona-1992,11
+Lithuania,beijing-2008,14
+Lithuania,london-2012,22
+Lithuania,rio-2016,16
+Lithuania,sydney-2000,12
+Lithuania,tokyo-2020,12
+Luxembourg,athens-2004,1
+Luxembourg,beijing-2008,2
+Luxembourg,london-2012,1
+Luxembourg,rio-2016,1
+Luxembourg,sydney-2000,2
+Madagascar,atlanta-1996,1
+Madagascar,barcelona-1992,1
+Malaysia,athens-2004,6
+Malaysia,atlanta-1996,4
+Malaysia,barcelona-1992,4
+Malaysia,beijing-2008,13
+Malaysia,london-2012,11
+Malaysia,rio-2016,10
+Malaysia,sydney-2000,4
+Malaysia,tokyo-2020,9
+Mali,athens-2004,1
+Malta,athens-2004,1
+Malta,beijing-2008,1
+Malta,london-2012,1
+Mauritius,athens-2004,2
+Mauritius,atlanta-1996,2
+Mauritius,beijing-2008,2
+Mauritius,london-2012,2
+Mauritius,rio-2016,3
+Mauritius,sydney-2000,2
+Mauritius,tokyo-2020,2
+Mexico,athens-2004,12
+Mexico,atlanta-1996,13
+Mexico,barcelona-1992,14
+Mexico,beijing-2008,16
+Mexico,london-2012,20
+Mexico,rio-2016,28
+Mexico,sydney-2000,20
+Mexico,tokyo-2020,21
+Monaco,london-2012,1
+Monaco,tokyo-2020,1
+Mongolia,athens-2004,5
+Mongolia,atlanta-1996,7
+Mongolia,barcelona-1992,14
+Mongolia,beijing-2008,14
+Mongolia,london-2012,16
+Mongolia,rio-2016,18
+Mongolia,sydney-2000,4
+Mongolia,tokyo-2020,20
+Montenegro,beijing-2008,3
+Montenegro,london-2012,3
+Montenegro,rio-2016,1
+Montenegro,tokyo-2020,3
+Morocco,athens-2004,11
+Morocco,atlanta-1996,10
+Morocco,barcelona-1992,9
+Morocco,beijing-2008,9
+Morocco,london-2012,7
+Morocco,rio-2016,9
+Morocco,sydney-2000,12
+Morocco,tokyo-2020,4
+Mozambique,athens-2004,1
+Mozambique,atlanta-1996,1
+Mozambique,barcelona-1992,2
+Mozambique,beijing-2008,1
+Mozambique,sydney-2000,1
+Mozambique,tokyo-2020,2
+Myanmar,london-2012,1
+Myanmar,rio-2016,2
+Myanmar,sydney-2000,3
+Namibia,athens-2004,3
+Namibia,atlanta-1996,3
+Namibia,barcelona-1992,2
+Namibia,beijing-2008,1
+Namibia,london-2012,1
+Namibia,rio-2016,2
+Namibia,tokyo-2020,3
+Nauru,athens-2004,1
+Nauru,beijing-2008,1
+Nauru,rio-2016,1
+Nauru,sydney-2000,1
+Nauru,tokyo-2020,1
+Netherlands,athens-2004,49
+Netherlands,atlanta-1996,50
+Netherlands,barcelona-1992,53
+Netherlands,beijing-2008,47
+Netherlands,london-2012,49
+Netherlands,rio-2016,58
+Netherlands,sydney-2000,56
+Netherlands,tokyo-2020,89
+Netherlands Antilles,beijing-2008,1
+New Zealand,athens-2004,28
+New Zealand,atlanta-1996,23
+New Zealand,barcelona-1992,32
+New Zealand,beijing-2008,31
+New Zealand,london-2012,41
+New Zealand,rio-2016,41
+New Zealand,sydney-2000,21
+New Zealand,tokyo-2020,43
+Nicaragua,barcelona-1992,1
+Nicaragua,beijing-2008,1
+Nicaragua,london-2012,2
+Nicaragua,rio-2016,1
+Nigeria,athens-2004,10
+Nigeria,atlanta-1996,13
+Nigeria,barcelona-1992,15
+Nigeria,beijing-2008,11
+Nigeria,london-2012,7
+Nigeria,rio-2016,7
+Nigeria,sydney-2000,15
+Nigeria,tokyo-2020,5
+North Macedonia,tokyo-2020,1
+Norway,athens-2004,14
+Norway,atlanta-1996,26
+Norway,barcelona-1992,21
+Norway,beijing-2008,17
+Norway,london-2012,13
+Norway,rio-2016,10
+Norway,sydney-2000,21
+Norway,tokyo-2020,17
+Oman,tokyo-2020,1
+Pakistan,athens-2004,4
+Pakistan,atlanta-1996,3
+Pakistan,barcelona-1992,2
+Pakistan,beijing-2008,1
+Pakistan,london-2012,1
+Pakistan,sydney-2000,2
+Pakistan,tokyo-2020,4
+Panama,athens-2004,1
+Panama,beijing-2008,1
+Panama,rio-2016,2
+Panama,tokyo-2020,2
+Papua New Guinea,athens-2004,1
+Papua New Guinea,barcelona-1992,2
+Papua New Guinea,beijing-2008,2
+Papua New Guinea,rio-2016,1
+Papua New Guinea,sydney-2000,1
+Papua New Guinea,tokyo-2020,2
+Paraguay,athens-2004,1
+Paraguay,barcelona-1992,1
+Paraguay,sydney-2000,1
+People's Republic of China,athens-2004,136
+People's Republic of China,atlanta-1996,113
+People's Republic of China,barcelona-1992,100
+People's Republic of China,beijing-2008,163
+People's Republic of China,london-2012,144
+People's Republic of China,rio-2016,142
+People's Republic of China,sydney-2000,102
+People's Republic of China,tokyo-2020,168
+Peru,athens-2004,2
+Peru,barcelona-1992,1
+Peru,beijing-2008,1
+Peru,london-2012,1
+Peru,tokyo-2020,2
+Philippines,athens-2004,2
+Philippines,atlanta-1996,2
+Philippines,barcelona-1992,5
+Philippines,beijing-2008,1
+Philippines,london-2012,1
+Philippines,rio-2016,2
+Philippines,sydney-2000,2
+Philippines,tokyo-2020,7
+Poland,athens-2004,57
+Poland,atlanta-1996,65
+Poland,barcelona-1992,79
+Poland,beijing-2008,75
+Poland,london-2012,57
+Poland,rio-2016,58
+Poland,sydney-2000,71
+Poland,tokyo-2020,55
+Portugal,athens-2004,12
+Portugal,atlanta-1996,11
+Portugal,barcelona-1992,5
+Portugal,beijing-2008,11
+Portugal,london-2012,14
+Portugal,rio-2016,17
+Portugal,sydney-2000,9
+Portugal,tokyo-2020,22
+Puerto Rico,athens-2004,4
+Puerto Rico,atlanta-1996,5
+Puerto Rico,barcelona-1992,7
+Puerto Rico,beijing-2008,4
+Puerto Rico,london-2012,6
+Puerto Rico,rio-2016,6
+Puerto Rico,sydney-2000,1
+Puerto Rico,tokyo-2020,2
+Qatar,athens-2004,3
+Qatar,atlanta-1996,2
+Qatar,barcelona-1992,3
+Qatar,beijing-2008,5
+Qatar,london-2012,4
+Qatar,rio-2016,4
+Qatar,sydney-2000,4
+Qatar,tokyo-2020,3
+ROC,tokyo-2020,153
+Refugee Olympic Athletes,rio-2016,1
+Refugee Olympic Team,tokyo-2020,4
+Republic of Korea,athens-2004,77
+Republic of Korea,atlanta-1996,72
+Republic of Korea,barcelona-1992,64
+Republic of Korea,beijing-2008,61
+Republic of Korea,london-2012,72
+Republic of Korea,rio-2016,61
+Republic of Korea,sydney-2000,64
+Republic of Korea,tokyo-2020,73
+Republic of Moldova,athens-2004,4
+Republic of Moldova,atlanta-1996,12
+Republic of Moldova,beijing-2008,5
+Republic of Moldova,london-2012,5
+Republic of Moldova,rio-2016,5
+Republic of Moldova,sydney-2000,9
+Republic of Moldova,tokyo-2020,9
+Romania,athens-2004,41
+Romania,atlanta-1996,41
+Romania,barcelona-1992,60
+Romania,beijing-2008,32
+Romania,london-2012,22
+Romania,rio-2016,20
+Romania,sydney-2000,61
+Romania,tokyo-2020,23
+Russian Federation,athens-2004,180
+Russian Federation,atlanta-1996,146
+Russian Federation,beijing-2008,149
+Russian Federation,london-2012,140
+Russian Federation,rio-2016,109
+Russian Federation,sydney-2000,170
+Rwanda,atlanta-1996,1
+Saint Kitts and Nevis,athens-2004,1
+Saint Kitts and Nevis,beijing-2008,1
+Saint Kitts and Nevis,sydney-2000,1
+Saint Lucia,rio-2016,1
+Samoa,barcelona-1992,2
+Samoa,beijing-2008,1
+Samoa,london-2012,1
+Samoa,rio-2016,1
+Samoa,sydney-2000,1
+Samoa,tokyo-2020,1
+San Marino,athens-2004,2
+San Marino,london-2012,1
+San Marino,sydney-2000,1
+San Marino,tokyo-2020,3
+Saudi Arabia,beijing-2008,1
+Saudi Arabia,london-2012,2
+Saudi Arabia,sydney-2000,1
+Saudi Arabia,tokyo-2020,1
+Senegal,atlanta-1996,1
+Senegal,beijing-2008,1
+Senegal,london-2012,3
+Senegal,rio-2016,2
+Senegal,tokyo-2020,1
+Serbia,beijing-2008,13
+Serbia,london-2012,26
+Serbia,rio-2016,18
+Serbia,tokyo-2020,19
+Serbia and Montenegro,athens-2004,9
+Serbia and Montenegro,atlanta-1996,13
+Serbia and Montenegro,sydney-2000,10
+Seychelles,atlanta-1996,2
+Seychelles,barcelona-1992,2
+Seychelles,beijing-2008,1
+Sierra Leone,atlanta-1996,2
+Singapore,athens-2004,5
+Singapore,atlanta-1996,1
+Singapore,beijing-2008,8
+Singapore,london-2012,8
+Singapore,rio-2016,5
+Singapore,sydney-2000,3
+Singapore,tokyo-2020,4
+Slovakia,athens-2004,17
+Slovakia,atlanta-1996,16
+Slovakia,beijing-2008,14
+Slovakia,london-2012,12
+Slovakia,rio-2016,15
+Slovakia,sydney-2000,22
+Slovakia,tokyo-2020,13
+Slovenia,athens-2004,17
+Slovenia,atlanta-1996,11
+Slovenia,barcelona-1992,10
+Slovenia,beijing-2008,12
+Slovenia,london-2012,18
+Slovenia,rio-2016,14
+Slovenia,sydney-2000,10
+Slovenia,tokyo-2020,16
+Solomon Islands,london-2012,1
+Somalia,atlanta-1996,1
+Somalia,tokyo-2020,1
+South Africa,athens-2004,14
+South Africa,atlanta-1996,20
+South Africa,barcelona-1992,8
+South Africa,beijing-2008,20
+South Africa,london-2012,25
+South Africa,rio-2016,21
+South Africa,sydney-2000,35
+South Africa,tokyo-2020,10
+Spain,athens-2004,64
+Spain,atlanta-1996,52
+Spain,barcelona-1992,76
+Spain,beijing-2008,58
+Spain,london-2012,50
+Spain,rio-2016,56
+Spain,sydney-2000,59
+Spain,tokyo-2020,72
+Sri Lanka,london-2012,1
+Sri Lanka,rio-2016,1
+Sri Lanka,sydney-2000,1
+Sudan,athens-2004,2
+Sudan,beijing-2008,1
+Sudan,london-2012,1
+Suriname,barcelona-1992,1
+Suriname,tokyo-2020,1
+Swaziland,sydney-2000,1
+Sweden,athens-2004,30
+Sweden,atlanta-1996,51
+Sweden,barcelona-1992,52
+Sweden,beijing-2008,32
+Sweden,london-2012,39
+Sweden,rio-2016,30
+Sweden,sydney-2000,49
+Sweden,tokyo-2020,38
+Switzerland,athens-2004,17
+Switzerland,atlanta-1996,18
+Switzerland,barcelona-1992,20
+Switzerland,beijing-2008,16
+Switzerland,london-2012,8
+Switzerland,rio-2016,19
+Switzerland,sydney-2000,23
+Switzerland,tokyo-2020,28
+Syrian Arab Republic,athens-2004,1
+Syrian Arab Republic,atlanta-1996,3
+Syrian Arab Republic,london-2012,2
+Syrian Arab Republic,rio-2016,1
+Syrian Arab Republic,tokyo-2020,1
+Tajikistan,athens-2004,4
+Tajikistan,atlanta-1996,2
+Tajikistan,beijing-2008,4
+Tajikistan,london-2012,4
+Tajikistan,rio-2016,2
+Tajikistan,tokyo-2020,4
+Thailand,athens-2004,15
+Thailand,atlanta-1996,7
+Thailand,barcelona-1992,11
+Thailand,beijing-2008,18
+Thailand,london-2012,11
+Thailand,rio-2016,19
+Thailand,sydney-2000,15
+Thailand,tokyo-2020,11
+The Former Yugoslav Republic of Macedonia,atlanta-1996,2
+The Former Yugoslav Republic of Macedonia,beijing-2008,1
+The Former Yugoslav Republic of Macedonia,sydney-2000,2
+Togo,beijing-2008,1
+Togo,london-2012,1
+Tonga,athens-2004,1
+Tonga,atlanta-1996,1
+Tonga,tokyo-2020,1
+Trinidad and Tobago,athens-2004,4
+Trinidad and Tobago,atlanta-1996,3
+Trinidad and Tobago,barcelona-1992,3
+Trinidad and Tobago,beijing-2008,4
+Trinidad and Tobago,london-2012,10
+Trinidad and Tobago,rio-2016,7
+Trinidad and Tobago,sydney-2000,2
+Trinidad and Tobago,tokyo-2020,5
+Tunisia,athens-2004,4
+Tunisia,atlanta-1996,6
+Tunisia,barcelona-1992,2
+Tunisia,beijing-2008,6
+Tunisia,london-2012,19
+Tunisia,rio-2016,9
+Tunisia,sydney-2000,6
+Tunisia,tokyo-2020,9
+Turkey,athens-2004,22
+Turkey,atlanta-1996,18
+Turkey,barcelona-1992,15
+Turkey,beijing-2008,11
+Turkey,london-2012,19
+Turkey,rio-2016,22
+Turkey,sydney-2000,20
+Turkey,tokyo-2020,33
+Turkmenistan,athens-2004,3
+Turkmenistan,beijing-2008,1
+Turkmenistan,london-2012,1
+Turkmenistan,sydney-2000,2
+Turkmenistan,tokyo-2020,4
+US Virgin Islands,barcelona-1992,3
+US Virgin Islands,beijing-2008,1
+US Virgin Islands,rio-2016,1
+Uganda,athens-2004,3
+Uganda,atlanta-1996,2
+Uganda,beijing-2008,3
+Uganda,london-2012,2
+Uganda,rio-2016,3
+Uganda,tokyo-2020,7
+Ukraine,athens-2004,82
+Ukraine,atlanta-1996,65
+Ukraine,beijing-2008,62
+Ukraine,london-2012,59
+Ukraine,rio-2016,48
+Ukraine,sydney-2000,78
+Ukraine,tokyo-2020,61
+Unified Team,barcelona-1992,204
+United Arab Emirates,athens-2004,2
+United Arab Emirates,beijing-2008,1
+United Arab Emirates,london-2012,1
+United Arab Emirates,rio-2016,3
+United Arab Emirates,sydney-2000,1
+United Republic of Tanzania,athens-2004,1
+United Republic of Tanzania,barcelona-1992,5
+United Republic of Tanzania,beijing-2008,1
+United Republic of Tanzania,rio-2016,1
+United Republic of Tanzania,tokyo-2020,1
+United States of America,athens-2004,196
+United States of America,atlanta-1996,220
+United States of America,barcelona-1992,226
+United States of America,beijing-2008,200
+United States of America,london-2012,213
+United States of America,rio-2016,210
+United States of America,sydney-2000,204
+United States of America,tokyo-2020,236
+Uruguay,athens-2004,2
+Uruguay,atlanta-1996,1
+Uruguay,london-2012,2
+Uruguay,rio-2016,1
+Uruguay,sydney-2000,2
+Uruguay,tokyo-2020,1
+Uzbekistan,athens-2004,16
+Uzbekistan,atlanta-1996,16
+Uzbekistan,beijing-2008,16
+Uzbekistan,london-2012,19
+Uzbekistan,rio-2016,25
+Uzbekistan,sydney-2000,18
+Uzbekistan,tokyo-2020,29
+Venezuela,athens-2004,9
+Venezuela,atlanta-1996,6
+Venezuela,barcelona-1992,5
+Venezuela,beijing-2008,12
+Venezuela,london-2012,14
+Venezuela,rio-2016,13
+Venezuela,sydney-2000,9
+Venezuela,tokyo-2020,7
+Vietnam,athens-2004,1
+Vietnam,beijing-2008,2
+Vietnam,london-2012,5
+Vietnam,rio-2016,5
+Vietnam,tokyo-2020,2
+"Virgin Islands, British",tokyo-2020,1
+Zambia,athens-2004,1
+Zambia,atlanta-1996,4
+Zambia,barcelona-1992,3
+Zambia,rio-2016,1
+Zambia,sydney-2000,1
+Zambia,tokyo-2020,4
+Zimbabwe,athens-2004,4
+Zimbabwe,atlanta-1996,1
+Zimbabwe,beijing-2008,6
+Zimbabwe,london-2012,3
+Zimbabwe,rio-2016,1
+Zimbabwe,sydney-2000,1
