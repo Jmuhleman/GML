@@ -40,7 +40,7 @@ Chile
 -Chinese Taipei
 Colombia
 +Comoros
-Congo
+Congo : Congo, Rep.
 Costa Rica
 Croatia
 Cuba
@@ -49,7 +49,7 @@ Czech Republic
 -Czechoslovakia
 Côte d'Ivoire : Cote d'Ivoire
 Democratic People's Republic of Korea : North Korea
--Democratic Republic of the Congo
+Democratic Republic of the Congo : Congo, Dem. Rep.
 Denmark
 Djibouti
 +Dominica
