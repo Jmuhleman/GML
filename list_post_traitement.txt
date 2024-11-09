@@ -23,7 +23,6 @@ Burundi
 Cameroon
 Canada
 Cape Verde
-Cayman Islands
 Central African Republic
 Chile
 China
@@ -31,7 +30,6 @@ Colombia
 Congo Dem. Rep.
 Congo Rep.
 Costa Rica
-Cote d'Ivoire
 Croatia
 Cuba
 Cyprus
@@ -157,7 +155,6 @@ UAE
 USA
 Uganda
 Ukraine
-Unified Team
 Uruguay
 Uzbekistan
 Venezuela
