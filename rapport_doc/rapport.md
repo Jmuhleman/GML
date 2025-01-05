@@ -80,6 +80,22 @@ Le projet **Predictus Olympiae** repose sur une collecte et une exploitation rig
 
 Ces données ont été extraites, nettoyées et combinées pour former une base solide permettant l’entraînement et la validation des modèles prédictifs développés dans ce projet. La richesse et la variété de ces sources offrent une vue d’ensemble des déterminants possibles des performances olympiques, tout en fournissant une granularité suffisante pour des analyses approfondies.  
 
+Nous avons choisi de travailler sur les disciplines suivantes :
+```python
+sports_summer_before_1988 = [
+    'Shooting', 'Diving', 'Canoe Sprint', 'Cycling Road', 'Football', 'Boxing', 'Basketball',
+    'Cycling Track', 'Fencing', 'Water Polo', 'Wrestling', 'Artistic Gymnastics', 'Weightlifting',
+    'Modern Pentathlon', 'Hockey', 'Athletics', 'Swimming', 'Sailing', 'Rowing'
+]
+sports_summer_after_1988 = [
+    'Shooting', 'Diving', 'Canoe Sprint', 'Cycling Road', 'Football', 'Boxing', 'Basketball',
+    'Cycling Track', 'Fencing', 'Table Tennis', 'Badminton', 'Water Polo', 'Wrestling',
+    'Artistic Gymnastics', 'Canoe Slalom', 'Rhythmic Gymnastics', 'Weightlifting', 'Modern Pentathlon',
+    'Hockey', 'Volleyball', 'Artistic Swimming', 'Athletics', 'Swimming', 'Sailing', 'Rowing',
+    'Tennis', 'Equestrian', 'Archery', 'Handball', 'Judo'
+]
+```
+En effet, pour les disciplines restantes nous n'avons pas jugé que l'historiques des performance était suffisant.
 
 ## 4. Méthodologie
 ### 4.1 Planification et Organisation
@@ -114,21 +130,37 @@ Dans cette deuxième itération, nous avons décidé d'ajouter des variables exp
 ![img](figures/sup/iter_2_model.png)
 ![img](figures/sup/iter_2_mse.png)
 ![img](figures/sup/iter_2_regression.png)
-Nous constatons qu'en ajoutant plus de variables explicatives, notre modèle a une meilleure performance. En effet, le R^2 de Pearson passe de 0.58 à 0.87. Cela signifie que 87% de la variance de notre variable cible est expliquée par nos variables explicatives. Cepandant nous pouvons voir que dans le coins gauche du bas nous avons un grand nombre de pays qui ne sont pas forcément bien traité par notre modèle.
+Nous constatons qu'en ajoutant plus de variables explicatives, notre modèle a une meilleure performance. En effet, le R^2 de Pearson passe de 0.58 à 0.87. Cela signifie que 87% de la variance de notre variable cible est expliquée par nos variables explicatives. Cependant nous pouvons voir que dans le coin gauche du bas nous avons un grand nombre de pays qui ne sont pas forcément bien traité par notre modèle.
 
 
-### 5.2.3 Itération 3 : Modèle de Régression Linéaire avec deux branche
+### 5.2.3 Itération 3 : Modèle de Régression Linéaire avec deux branches
 
-Dans cette itération nous avons décidé de construire un modèle de prédiction plus complexe. Une branche pour effectuer une classification et une autre qui se chargera de la régression. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle.
+Dans cette itération nous avons décidé de construire un modèle de prédiction plus complexe. Une branche pour effectuer une classification selon la performance du pays et une autre qui se chargera de la régression. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle.
 
-Nous commencerons par traiter 2 classes pour la branche concerneé.
+Nous commencerons par traiter 2 classes pour la branche concernée.
 
 ![img](figures/sup/iter_3_model.png)
 ![img](figures/sup/iter_3_loss.png)
 ![img](figures/sup/iter_3_mse.png)
 ![img](figures/sup/iter_3_acc.png)
+![img](figures/sup/iter_3_conf.png)
+![img](figures/sup/iter_3_reg.png)
+Nous pouvons voir en premier lieu que notre modèle est capable de classifier les pays en 2 classes selon la performance du pays nous avons fixé le seuil à 0.3. Après normalisation des valeurs des performance des délégations si le pays à une performance < 0.3 alors il est marqué comme un pays de classe 0 sinon 1. A noter que les données des performances correspondent aux nombres d'athlètes faisant partie du top 10 pour les disciplines retenues pour chaque éditions. 
 
+Nous pouvons en premier lieu de constater que le modèle est capable de classifier les pays selon les classes qui leur ont été assignées. En effet, l'accuracy semble bien augmenter au fil de l'entrainement. Nous obtenons un score f1 de 0.9085 et une accuracy de 0.93. La matrice de confusion nous permet de confirmer ces résultats relativement bons.
 
+Concernant la régression nous ne pouvons pas en dire autant. Il semble que le réseau est capable de diminuer son loss selon l'entrainement mais la MSE ne semble pas diminuer. Nous observons plutot une courbe erratique. 
+A noter que nous avons du considérablement augmenter le nombre de neurones pour la branche de la régression. Dans le cas contraire le modèle semblait être perturbé par la backpropagation de la classification.
+
+### 5.2.4 itération 4 : Modèle de Régression Linéaire avec deux branches et 3 classes
+Dans cette itération nous proposons de passer à 3 classes pour la classification. Nous avons décidé de classer les pays en 3 classes selon leur performance. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle. Les seuils sont fixés à 0.2 et 0.8 pour la définition des classes de pays.
+
+![img](figures/sup/iter_4_model.png)
+![img](figures/sup/iter_4_loss.png)
+![img](figures/sup/iter_4_mse.png)
+![img](figures/sup/iter_4_acc.png)
+![img](figures/sup/iter_4_conf.png)
+![img](figures/sup/iter_4_reg.png)
 ### 5.3 Clustering Non Supervisé
 
 
