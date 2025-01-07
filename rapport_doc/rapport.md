@@ -172,8 +172,67 @@ A noter qu'en comparaison avec l'itération précédente, nous avons environ 400
 
 ### 5.3 Clustering Non Supervisé
 
-### 5.3.1 Itération 5 : K-Means
+### 5.3.1 Itération 5 : SOM
 
+Pour cette itération nous avons décidé d'utiliser un réseau de neurones SOM pour effectuer un clustering des pays. Nous avons décidé de fixer le nombre de clusters à 5. Les données d'entrée sont le dataset avec les 3 classes selon les seuils précédents.  
+
+![img](figures/nsup/iter_5_som.png)
+
+```python
+Cluster to Country and Class Mapping:
+Cluster (0, 0): 11 countries -> ['Great Britain', 'Luxembourg', 'Belgium', 'USA', 'Slovenia', 'Spain', 'Japan', 'Italy', 'Denmark', 'Netherlands', 'Ireland']
+Class distribution in Cluster (0, 0): {0: 1, 1: 1, 2: 1}
+Cluster (0, 1): 16 countries -> ['Ukraine', 'Hungary', 'Slovakia', 'Armenia', 'Romania', 'South Korea', 'Latvia', 'Estonia', 'Belarus', 'Turkey', 'Russia', 'Georgia', 'Peru', 'Poland', 'Czech Republic', 'Lithuania']
+Class distribution in Cluster (0, 1): {0: 1, 1: 1}
+Cluster (0, 2): 10 countries -> ['Hong Kong China', 'Austria', 'Iceland', 'Sweden', 'Switzerland', 'Canada', 'Norway', 'New Zealand', 'Finland', 'Germany']
+Class distribution in Cluster (0, 2): {0: 1, 1: 1, 2: 1}
+Cluster (0, 3): 6 countries -> ['Chile', 'Iran', 'Kazakhstan', 'Israel', 'Argentina', 'Uzbekistan']
+Class distribution in Cluster (0, 3): {0: 1}
+Cluster (0, 4): 5 countries -> ['Oman', 'Saudi Arabia', 'UAE', 'Kuwait', 'Qatar']
+Class distribution in Cluster (0, 4): {0: 1}
+Cluster (1, 0): 5 countries -> ['France', 'Cyprus', 'Australia', 'Croatia', 'Portugal']
+Class distribution in Cluster (1, 0): {0: 1, 1: 1}
+Cluster (1, 1): 10 countries -> ['Serbia', 'Lebanon', 'Mexico', 'Greece', 'Moldova', 'Albania', 'Bulgaria', 'Montenegro', 'Bosnia and Herzegovina', 'Uruguay']
+Class distribution in Cluster (1, 1): {0: 1}
+Cluster (1, 2): 2 countries -> ['India', 'China']
+Class distribution in Cluster (1, 2): {0: 1, 1: 1}
+Cluster (1, 3): 4 countries -> ['Kyrgyzstan', 'Mongolia', 'North Korea', 'Tajikistan']
+Class distribution in Cluster (1, 3): {0: 1}
+Cluster (1, 4): 10 countries -> ['Jordan', 'Namibia', 'Morocco', 'Djibouti', 'Turkmenistan', 'Egypt', 'Algeria', 'Botswana', 'Syria', 'Tunisia']
+Class distribution in Cluster (1, 4): {0: 1}
+Cluster (2, 0): 4 countries -> ['Costa Rica', 'Trinidad and Tobago', 'Thailand', 'Cuba']
+Class distribution in Cluster (2, 0): {0: 1, 1: 1}
+Cluster (2, 1): 6 countries -> ['Paraguay', 'Venezuela', 'Bahamas', 'Brazil', 'Colombia', 'El Salvador']
+Class distribution in Cluster (2, 1): {0: 1}
+Cluster (2, 2): 4 countries -> ['Myanmar', 'Eswatini', 'Azerbaijan', 'South Africa']
+Class distribution in Cluster (2, 2): {0: 1}
+Cluster (2, 3): 2 countries -> ['Pakistan', 'Zimbabwe']
+Class distribution in Cluster (2, 3): {0: 1}
+Cluster (2, 4): 3 countries -> ['Iraq', 'Eritrea', 'Sudan']
+Class distribution in Cluster (2, 4): {0: 1}
+Cluster (3, 0): 5 countries -> ['Dominican Republic', 'Indonesia', 'Guatemala', 'Honduras', 'Vietnam']
+Class distribution in Cluster (3, 0): {0: 1}
+Cluster (3, 1): 3 countries -> ['Ecuador', 'Bangladesh', 'Philippines']
+Class distribution in Cluster (3, 1): {0: 1}
+Cluster (3, 2): 3 countries -> ['Kenya', 'Ghana', 'Madagascar']
+Class distribution in Cluster (3, 2): {0: 1}
+Cluster (3, 3): 6 countries -> ['Zambia', 'Senegal', 'Ethiopia', 'Mozambique', 'Rwanda', 'Burundi']
+Class distribution in Cluster (3, 3): {0: 1}
+Cluster (3, 4): 4 countries -> ['Mali', 'Angola', 'Somalia', 'Burkina Faso']
+Class distribution in Cluster (3, 4): {0: 1}
+Cluster (4, 0): 8 countries -> ['Panama', 'Sri Lanka', 'Fiji', 'Malaysia', 'Guyana', 'Suriname', 'Jamaica', 'Solomon Islands']
+Class distribution in Cluster (4, 0): {0: 1}
+Cluster (4, 1): 4 countries -> ['Nicaragua', 'Gabon', 'Papua New Guinea', 'Haiti']
+Class distribution in Cluster (4, 1): {0: 1}
+Cluster (4, 2): 5 countries -> ['Sierra Leone', 'Congo Dem. Rep.', 'Guinea-Bissau', 'Ivory Coast', 'Liberia']
+Class distribution in Cluster (4, 2): {0: 1}
+Cluster (4, 3): 5 countries -> ['Uganda', 'Togo', 'Central African Republic', 'Tanzania', 'Cameroon']
+Class distribution in Cluster (4, 3): {0: 1}
+Cluster (4, 4): 2 countries -> ['Nigeria', 'Benin']
+Class distribution in Cluster (4, 4): {0: 1}
+```
+
+Après plusieurs essais nous avons pu obtenir une carte de 5x5 clusters avec un entrainement de 1000 itérations. Le clustering nous parait pas parfait néanmoins nous pouvons remarquer que la plupart des pays de classe 0 se retrouvent bien ensemble ainsi que les pays de classe 1. En ce qui concerne les pays de classe 2 ceux-ci sont dans le neurone de sortie # (0,0) et (0,2). Ceci est pertinent car ces pays sont ceux qui ont les meilleures performances. Ils bien séparés des autres pays. Nous remarquons également que nous trouvons des pays de memes régions géographique souvent dans le même cluster.
 
 ---
 ## 6. Résultats et Analyse
