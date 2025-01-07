@@ -156,11 +156,23 @@ A noter que nous avons du considérablement augmenter le nombre de neurones pour
 Dans cette itération nous proposons de passer à 3 classes pour la classification. Nous avons décidé de classer les pays en 3 classes selon leur performance. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle. Les seuils sont fixés à 0.2 et 0.8 pour la définition des classes de pays.
 
 ![img](figures/sup/iter_4_model.png)
-![img](figures/sup/iter_4_loss.png)
+![img](figures/sup/iter_4_loss_reg.png)
+![img](figures/sup/iter_4_loss_cl.png)
 ![img](figures/sup/iter_4_mse.png)
 ![img](figures/sup/iter_4_acc.png)
 ![img](figures/sup/iter_4_conf.png)
 ![img](figures/sup/iter_4_reg.png)
+
+Nous observons un loss, autant sur la sortie de la régression que sur la classification qui démontre une bonne stabilité semblant capturer correctement des caractéristiques. La MSE de la régression cette fois est stable pour tous les folds et semble démonter un apprentissage également. Concernant l'accuracy nous obtenons une courbe plus cohérente dans le sens que les oscillations restent stable et semblent converger vers une meilleur résultat ~0.95. 
+
+L'analyse du R^2 est plutôt satisfaisant nous arrivons avec un coefficient de Pearson de 0.77 alors que le modèle en 2 classes était négatif. Nous n'atteignons pas le 0.87 du modèle de l'itération 2 mais nous sommes capable de classifier les pays avec le modèle actuel. La classification influence certainement la performance de la régression c'est probablement pourquoi nous ne sommes pas aussi bon que le modèle de l'itération 2. 
+
+
+A noter qu'en comparaison avec l'itération précédente, nous avons environ 4000 paramètres avec le modèle actuel. Le modèle précédent demandait l'ajout de multiples couches pour la régression ce qui nous conduisait à avoir environ 68300 paramètres. La passage avec un nombre de classes plus granuleux permet certainement au modèle de mieux comprendre le comportement des performance et d'adapter son échelle de prédiction.
+
+
+
+
 ### 5.3 Clustering Non Supervisé
 
 
