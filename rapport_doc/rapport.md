@@ -1,5 +1,7 @@
 # Rapport Final : Projet Predictus Olympiae
 
+### Julien Mühlemann, Cristhian Ronquillo, Dr. Ing. Julien Billeter
+
 ## Table des Matières
 1. [Introduction](#introduction)  
 2. [Présentation du Projet](#présentation-du-projet)  
@@ -25,15 +27,18 @@
 8. [Discussion et Limites](#discussion-et-limites)  
    8.1 [Forces et Faiblesses](#forces-et-faiblesses)  
    8.2 [Améliorations Futures](#améliorations-futures)  
-9. [Conclusion](#conclusion)  
-10. [Annexes](#annexes)  
+9. [Conclusion](#conclusion)
+10. [Références](#références)
+11. [Annexes](#annexes)  
     10.1 [Journal de Travail](#journal-de-travail)  
     10.2 [Code Source et Documentation](#code-source-et-documentation)  
 
 ---
 
 ## 1. Introduction
-Les Jeux olympiques, véritable vitrine des performances sportives mondiales, représentent bien plus qu’un simple événement sportif. Ils incarnent l’excellence, le dépassement de soi, et sont souvent perçus comme un reflet des capacités économiques, culturelles et organisationnelles des nations participantes.  
+
+Les Jeux olympiques, véritable vitrine des performances sportives mondiales, représentent bien plus qu’un simple événement sportif. Ils incarnent l’excellence, le dépassement de soi, et sont souvent perçus comme un reflet des capacités économiques, culturelles et organisationnelles des nations participantes.
+
 Le projet **Predictus Olympiae** s’inscrit dans cette dynamique, visant à modéliser et prédire les performances olympiques des pays en fonction de multiples variables, telles que les données socio-économiques, démographiques et historiques. L’objectif ultime est de fournir un outil analytique robuste pour mieux comprendre les déterminants du succès sportif et éclairer les stratégies nationales.
 
 ---
@@ -41,7 +46,8 @@ Le projet **Predictus Olympiae** s’inscrit dans cette dynamique, visant à mod
 ## 2. Présentation du Projet
 
 ### 2.1 Contexte
-Depuis leur résurrection moderne en 1896, les Jeux olympiques sont devenus un symbole global de l’unité et de la compétition entre nations. Chaque médaille remportée témoigne non seulement des efforts individuels, mais aussi du soutien institutionnel et des investissements nationaux dans le sport.  
+Depuis leur résurrection moderne en 1896, les Jeux olympiques sont devenus un symbole global de l’unité et de la compétition entre nations. Chaque médaille remportée témoigne non seulement des efforts individuels, mais aussi du soutien institutionnel et des investissements nationaux dans le sport.
+
 Dans ce contexte, le projet **Predictus Olympiae** ambitionne d’identifier les facteurs clés permettant de prédire les performances olympiques. En s’appuyant sur des données variées, il explore les liens entre des variables telles que le PIB, la population, les dépenses en infrastructures sportives, et les résultats sportifs passés.
 
 ### 2.2 Problématique
@@ -65,13 +71,11 @@ Le projet s’articule autour des objectifs suivants :
 
 ## 3. Technologies et Données
 
-## 3. Technologies et Données
-
 ### 3.1 Sources de Données
 Le projet **Predictus Olympiae** repose sur une collecte et une exploitation rigoureuse de données provenant de diverses sources fiables. Les principales catégories de données utilisées incluent :  
-- **Données historiques des médailles olympiques** : Informations sur les performances des nations aux Jeux olympiques passés, via Kaggle. Nous avons transformé les données brutes en un format tel que le nombre d'athlètes présent dans les 10 premier pour chaque nation dans chque discipline.
+- **Données historiques des résulats olympiques** : Informations sur les performances des nations aux Jeux olympiques passés, via Kaggle [1]. Nous avons transformé les données brutes en un format tel qu'il représente le nombre d'athlètes par nation présent dans les 10 premiers pour chaque discipline.
 
-- **Données socio-économiques et démographiques** : Issues notamment des ensembles de données de Gapminder, ces données couvrent des indicateurs tels que :  
+- **Données socio-économiques et démographiques** : Informations issues notamment des ensembles de données de Gapminder, ces données couvrent des indicateurs tels que :  
   - **Mortalité infantile** : Mesure du taux de mortalité des enfants de moins de cinq ans, reflétant les conditions de santé et de développement d’une nation.  
   - **Fertilité** : Nombre moyen d’enfants par femme, indicateur clé des dynamiques démographiques.  
   - **PIB par habitant (GDP_capita)** : Représentant la richesse économique d’un pays, il est essentiel pour comprendre les ressources disponibles pour le développement sportif.  
@@ -257,8 +261,11 @@ Après plusieurs essais nous avons pu obtenir une carte de 5x5 clusters avec un 
 - Exploration d’approches de modélisation plus avancées.
 
 
-
 ## 9. Conclusion
+
+## 10. Références
+
+[1] https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_medals.csv
 
 ## 10. Annexes
 ### 10.1 Journal de Travail
