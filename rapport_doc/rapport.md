@@ -79,9 +79,11 @@ Le projet **Predictus Olympiae** repose sur une collecte et une exploitation rig
 - **Données socio-économiques et démographiques** : Informations issues notamment des ensembles de données de Gapminder, ces données couvrent des indicateurs tels que :  
   - **Mortalité infantile** : Mesure du taux de mortalité des enfants de moins de cinq ans, reflétant les conditions de santé et de développement d’une nation.  
   - **Fertilité** : Nombre moyen d’enfants par femme, indicateur clé des dynamiques démographiques.  
-  - **PIB par habitant (GDP_capita)** : Représentant la richesse économique d’un pays, il est essentiel pour comprendre les ressources disponibles pour le développement sportif.  
+  - **PIB par habitant** : Représentant la richesse économique d’un pays, il est essentiel pour comprendre les ressources disponibles pour le développement sportif.  
   - **Espérance de vie** : Indicateur de la qualité de vie globale et des infrastructures de santé.  
   - **Population totale** : Facteur influençant la taille du vivier de talents sportifs disponibles dans chaque pays.  
+
+- **Données climatiques** : xxx
 
 Ces données ont été extraites, nettoyées et combinées pour former une base solide permettant l’entraînement et la validation des modèles prédictifs développés dans ce projet. La richesse et la variété de ces sources offrent une vue d’ensemble des déterminants possibles des performances olympiques, tout en fournissant une granularité suffisante pour des analyses approfondies.  
 
