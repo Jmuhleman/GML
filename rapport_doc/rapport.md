@@ -1,396 +1,456 @@
 # Rapport Final : Projet Predictus Olympiae
 
-### Julien Mühlemann, Cristhian Ronquillo, Dr. Ing. Julien Billeter
+### Julien Mühlemann (JM), Cristhian Ronquillo (CR), Dr. Ing. Julien Billeter (JB)
 
-## Table des Matières
-1. [Introduction](#introduction)  
-2. [Présentation du Projet](#présentation-du-projet)  
-   2.1 [Contexte](#contexte)  
-   2.2 [Problématique](#problématique)  
-   2.3 [Objectifs](#objectifs)  
-3. [Technologies et Données](#technologies-et-données)  
-   3.1 [Technologies Utilisées](#technologies-utilisées)  
-   3.2 [Sources de Données](#sources-de-données)  
-4. [Méthodologie](#méthodologie)  
-   4.1 [Planification et Organisation](#planification-et-organisation)  
-   4.2 [Approches Supervisée et Non Supervisée](#approches-supervisée-et-non-supervisée)  
-5. [Implémentation](#implémentation)  
-   5.1 [Préparation des Données](#préparation-des-données)  
-   5.2 [Analyse exploratoire des Données]()  
-   5.3 [Méthodes Non Supervisées](#méthodes-non-supervisées)
-   5.4 [Méthodes Supervisées](#méthodes-supervisées) 
-6. [Résultats et Analyse](#résultats-et-analyse)  
-   6.1 [Performances des Modèles](#performances-des-modèles)  
-   6.2 [Insights Clés](#insights-clés)  
-7. [Plan d’Assurance Qualité](#plan-dassurance-qualité)  
-   7.1 [Contrôle des Données](#contrôle-des-données)  
-   7.2 [Validation et Revue de Code](#validation-et-revue-de-code)  
-8. [Discussion et Limites](#discussion-et-limites)  
-   8.1 [Forces et Faiblesses](#forces-et-faiblesses)  
-   8.2 [Améliorations Futures](#améliorations-futures)  
-9. [Conclusion](#conclusion)
-10. [Références](#références)
-11. [Annexes](#annexes)  
-    10.1 [Journal de Travail](#journal-de-travail)  
-    10.2 [Code Source et Documentation](#code-source-et-documentation)  
+# Table des Matières
 
----
+1. **Introduction**
+
+2. **Présentation du Projet**
+      - 2.1 Contexte<br>
+      - 2.2 Problématique<br>
+      - 2.3 Objectifs<br>
+
+3. **Sources de Données**
+      - 3.1 
+      - 3.2 Disciplines Sélectionnées
+      - 3.3 Données Socio-économiques et Démographiques  
+      - 3.4 Données Climatiques  
+
+4. **Méthodologie**
+      - 4.1 Planification et Organisation**
+      - 4.2 Approches Supervisée et Non Supervisée  
+
+ 5. **Implémentation**
+      - 5.1 Préparation des Données  
+      - 5.2 Analyse Exploratoire des Données  
+         - 5.2.1 Corrélations entre Variables  
+         - 5.2.2 Analyse en Composantes Principales  
+         - 5.2.3 Sélection d'Attributs  
+      - 5.3 Méthodes Non Supervisées  
+         - 5.3.1 UMAP  
+         - 5.3.2 t-SNE  
+         - 5.3.3 PCA  
+         - 5.3.4 Random Projection  
+         - 5.3.5 MDS  
+         - 5.3.6 Isomap  
+         - 5.3.7 Cartes auto-organisatrices (SOM)  
+      - 5.4 Méthodes Supervisées  
+         - 5.4.1 Arbre de Décision, Forêt Aléatoire, et XGBoost  
+         - 5.4.2 Réseaux de Neurones  
+
+6. **Conclusion**
+
+7. **Références**
+
 
 ## 1. Introduction
 
-Les Jeux olympiques, véritable vitrine des performances sportives mondiales, représentent bien plus qu’un simple événement sportif. Ils incarnent l’excellence, le dépassement de soi, et sont souvent perçus comme un reflet des capacités économiques, culturelles et organisationnelles des nations participantes.
+## 1. Introduction  
 
-Le projet **Predictus Olympiae** s’inscrit dans cette dynamique, visant à modéliser et prédire les performances olympiques des pays en fonction de multiples variables, telles que les données socio-économiques, démographiques et historiques. L’objectif ultime est de fournir un outil analytique robuste pour mieux comprendre les déterminants du succès sportif et éclairer les stratégies nationales.
+Les Jeux Olympiques, véritable célébration des performances sportives mondiales, transcendent le cadre d’un simple événement sportif. Ils symbolisent l’excellence, le dépassement de soi et reflètent souvent les capacités économiques, culturelles et organisationnelles des nations participantes.  
 
----
+Dans cette optique, le projet **Predictus Olympiae** vise à explorer et modéliser les performances olympiques des pays. Grâce à l’analyse de multiples variables – notamment socio-économiques, démographiques et climatiques – ce projet ambitionne de fournir des outils analytiques capables d’identifier les facteurs déterminants du succès sportif et, potentiellement, de prédire les performances futures.
 
 ## 2. Présentation du Projet
 
-### 2.1 Contexte
-Depuis leur résurrection moderne en 1896, les Jeux olympiques sont devenus un symbole global de l’unité et de la compétition entre nations. Chaque médaille remportée témoigne non seulement des efforts individuels, mais aussi du soutien institutionnel et des investissements nationaux dans le sport.
+### 2.1 Contexte  
 
-Dans ce contexte, le projet **Predictus Olympiae** ambitionne d’identifier les facteurs clés permettant de prédire les performances olympiques. En s’appuyant sur des données variées, il explore les liens entre des variables telles que le PIB, la population, les dépenses en infrastructures sportives, et les résultats sportifs passés.
+Depuis leur résurrection moderne en 1896, les Jeux Olympiques (JO) sont devenus un symbole global de l’unité et de la compétition entre nations. Chaque médaille remportée témoigne non seulement des efforts individuels, mais aussi du soutien institutionnel et des investissements nationaux dans le sport.  
 
-### 2.2 Problématique
-La prédiction des performances olympiques constitue un défi complexe pour plusieurs raisons :  
-- **Hétérogénéité des données** : Les variables influençant les performances sportives proviennent de domaines variés (économie, politique, climat).  
-- **Complexité des interactions** : Les relations entre ces variables sont rarement linéaires et peuvent inclure des effets multiplicateurs ou contextuels.  
-- **Données historiques incomplètes** : Certaines variables, telles que le financement sportif ou les données démographiques spécifiques, ne sont pas toujours disponibles ou homogènes.  
-Le projet doit donc relever ces défis pour construire des modèles fiables et interprétables.
+Dans ce contexte, le projet **Predictus Olympiae** ambitionne d'analyser les facteurs permettant d'expliquer les performances olympiques. En s’appuyant sur des données variées, il explore les liens entre des variables telles que le PIB par habitant, la population, le climat, et les résultats sportifs passés.  
 
-### 2.3 Objectifs
+### 2.2 Problématique  
+
+Prédire les performances olympiques est un défi complexe pour plusieurs raisons :  
+- **Hétérogénéité des données** : Les facteurs influençant les performances sportives proviennent de domaines divers, tels que l’économie, la sociologie et le climat.  
+- **Complexité des interactions** : Les relations entre ces variables sont souvent non linéaires et peuvent inclure des effets combinatoires ou contextuels.  
+- **Données historiques incomplètes** : Certaines informations essentielles, comme le financement sportif ou des données démographiques précises, sont parfois indisponibles ou hétérogènes.  
+
+Le projet doit ainsi relever ces défis pour développer des modèles à la fois fiables et interprétables.  
+
+### 2.3 Objectifs  
+
 Le projet s’articule autour des objectifs suivants :  
+
 - **Must Have** :  
-  - Développer un modèle prédictif performant basé sur l’apprentissage supervisé pour estimer les performances des pays aux Jeux olympiques.  
-  - Fournir des prédictions exploitables pour un large éventail de disciplines sportives.  
+  - Développer un modèle prédictif performant basé sur l’apprentissage supervisé pour estimer les performances des pays aux Jeux Olympiques.  
+  - Fournir des prédictions exploitables couvrant un large éventail de disciplines sportives regroupées.  
+
 - **Nice to Have** :  
-  - Produire une analyse détaillée par discipline sportive afin d’identifier les forces et faiblesses des pays.  
-  - Explorer des techniques avancées d’optimisation des modèles, telles que le fine-tuning des hyperparamètres ou l’intégration d’approches de deep learning.  
-  
+  - Réaliser une analyse détaillée par discipline sportive afin d’identifier les forces et faiblesses spécifiques des pays.  
+  - Explorer des techniques avancées d’optimisation des modèles, telles que le fine-tuning des hyperparamètres ou l’intégration d’approches basées sur le deep learning.  
 
----
+## 3. Sources de données  
 
-## 3. Technologies et Données
+Le projet **Predictus Olympiae** s'appuie sur la collecte de données issues de diverses sources fiables. Les principales catégories de données utilisées incluent :  
 
-### 3.1 Sources de Données
-Le projet **Predictus Olympiae** repose sur une collecte et une exploitation rigoureuse de données provenant de diverses sources fiables. Les principales catégories de données utilisées incluent :  
-- **Données historiques des résulats olympiques** : Informations sur les performances des nations aux Jeux olympiques passés, via Kaggle [1]. Nous avons transformé les données brutes en un format tel qu'il représente le nombre d'athlètes par nation présent dans les 10 premiers pour chaque discipline.
+#### 3.1 Données historiques des résultats olympiques  
 
-- **Données socio-économiques et démographiques** : Informations issues notamment des ensembles de données de Gapminder, ces données couvrent des indicateurs tels que :  
-  - **Mortalité infantile** : Mesure du taux de mortalité des enfants de moins de cinq ans, reflétant les conditions de santé et de développement d’une nation.  
-  - **Fertilité** : Nombre moyen d’enfants par femme, indicateur clé des dynamiques démographiques.  
-  - **PIB par habitant** : Représentant la richesse économique d’un pays, il est essentiel pour comprendre les ressources disponibles pour le développement sportif.  
-  - **Espérance de vie** : Indicateur de la qualité de vie globale et des infrastructures de santé.  
-  - **Population totale** : Facteur influençant la taille du vivier de talents sportifs disponibles dans chaque pays.  
+Les informations sur les performances des nations aux précédents Jeux Olympiques ont été collectées via Kaggle [1]. Les données brutes ont été transformées pour refléter le nombre d'athlètes par nation figurant parmi les 10 premiers dans chaque discipline.  
 
-- **Données climatiques** : xxx
+Étant donné que les Jeux Olympiques d'été incluent un plus grand nombre de disciplines et possèdent un historique plus riche, notre analyse se concentre exclusivement sur ces derniers.
 
-Ces données ont été extraites, nettoyées et combinées pour former une base solide permettant l’entraînement et la validation des modèles prédictifs développés dans ce projet. La richesse et la variété de ces sources offrent une vue d’ensemble des déterminants possibles des performances olympiques, tout en fournissant une granularité suffisante pour des analyses approfondies.  
+#### 3.2 Disciplines Sélectionnées  
 
-Nous avons choisi de travailler sur les disciplines suivantes :
-```python
-sports_summer_before_1988 = [
-    'Shooting', 'Diving', 'Canoe Sprint', 'Cycling Road', 'Football', 'Boxing', 'Basketball',
-    'Cycling Track', 'Fencing', 'Water Polo', 'Wrestling', 'Artistic Gymnastics', 'Weightlifting',
-    'Modern Pentathlon', 'Hockey', 'Athletics', 'Swimming', 'Sailing', 'Rowing'
-]
-sports_summer_after_1988 = [
-    'Shooting', 'Diving', 'Canoe Sprint', 'Cycling Road', 'Football', 'Boxing', 'Basketball',
-    'Cycling Track', 'Fencing', 'Table Tennis', 'Badminton', 'Water Polo', 'Wrestling',
-    'Artistic Gymnastics', 'Canoe Slalom', 'Rhythmic Gymnastics', 'Weightlifting', 'Modern Pentathlon',
-    'Hockey', 'Volleyball', 'Artistic Swimming', 'Athletics', 'Swimming', 'Sailing', 'Rowing',
-    'Tennis', 'Equestrian', 'Archery', 'Handball', 'Judo'
-]
-```
-En effet, pour les disciplines restantes nous n'avons pas jugé que l'historiques des performance était suffisant.
+Nous avons choisi de concentrer notre analyse sur les disciplines suivantes :  
+
+**Sports présents aux Jeux Olympiques d'été avant 1988**  
+- Tir  
+- Plongeon  
+- Canoë Sprint  
+- Cyclisme sur route  
+- Football  
+- Boxe  
+- Basketball  
+- Cyclisme sur piste  
+- Escrime  
+- Water-polo  
+- Lutte  
+- Gymnastique artistique  
+- Haltérophilie  
+- Pentathlon moderne  
+- Hockey sur gazon  
+- Athlétisme  
+- Natation  
+- Voile  
+- Aviron  
+
+**Sports ajoutés après 1988**  
+- Tennis de table  
+- Badminton  
+- Canoë Slalom  
+- Gymnastique rythmique  
+- Volley-ball  
+- Natation artistique  
+- Tennis  
+- Équitation  
+- Tir à l'arc  
+- Handball  
+- Judo  
+
+Les autres disciplines n'ont pas été retenues car nous avons estimé que l'historique des performances disponibles était insuffisant pour une analyse pertinente.
+
+#### 3.3 Données socio-économiques et démographiques  
+
+Les données socio-économiques et démographiques proviennent des ensembles de données de Gapminder. Elles incluent des indicateurs clés tels que :  
+
+- **Mortalité infantile** (*child*) : Mesure du taux de mortalité des enfants de moins de cinq ans, un reflet des conditions de santé publique et du développement global d’une nation [2].  
+- **Fertilité** (*fertility*) : Nombre moyen d’enfants par femme, un indicateur fondamental des dynamiques démographiques [3].  
+- **PIB par habitant** (*capita* ou *gdp*) : Représente la richesse économique d’un pays, un facteur crucial pour évaluer les ressources disponibles pour le développement sportif [4].  
+- **Population totale** (*pop*) : Indique la taille du vivier de talents sportifs potentiels dans chaque pays [5].  
+ 
+
+#### 3.4 Données climatiques
+
+Les données climatiques utilisées dans cette étude proviennent du système de classification *Köppen-Geiger*, qui catégorise les climats mondiaux en fonction de paramètres tels que les températures, les précipitations et la saisonnalité. Chaque type de climat est représenté par un code, comme "Af" pour les climats équatoriaux humides ou "BWk" pour les climats désertiques froids. 
+
+Pour intégrer ces données dans l’analyse, chaque code climatique a été associé à quatre indices numériques représentant la température, les précipitations, la saisonnalité et l’aridité. Ces indices, compris entre 0 et 1, ont été définis via des règles heuristiques et des interprétations subjectives des définitions Köppen-Geiger. Une valeur de 1 pour la température indique un climat chaud, tandis qu’une valeur de 0 correspond à un climat très froid. Pour les précipitations, une valeur de 1 traduit une humidité importante, tandis qu’une valeur de 0 caractérise des régions très sèches. La saisonnalité est élevée (proche de 1) dans les régions où les variations climatiques sont faibles, et l’aridité est maximale (1) dans les zones désertiques.
+
+Pour chaque pays, les types de climats présents ont été traduits en indices numériques selon ces correspondances. Les indices des différents climats au sein de chaque pays ont été moyennés pour obtenir des valeurs nationales représentatives des quatre dimensions climatiques (*Avg_Temperature*, *Avg_Precipitation*, *Avg_Seasonnality*, et *Avg_Aridity*). Ces moyennes ont ensuite été normalisées entre 0 et 1 afin de garantir une comparabilité entre les pays et faciliter l'interprétation des résultats. Cette approche permet de synthétiser de manière cohérente les caractéristiques climatiques des pays tout en tenant compte de la diversité des climats locaux.
 
 ## 4. Méthodologie
-### 4.1 Planification et Organisation
-distribution des tâches, répartition des rôles, gestion des délais, communication interne, etc.
+
+### 4.1 Planification et Organisation  
+
+Les tâches ont été réparties comme suit : JM, CR et JB ont recherché et trié les données. JM s'est particulièrement concentré sur les données relatives aux performances olympiques et au climat, tandis que JB a principalement traité les données socio-économiques et sociologiques. JM et JB ont harmonisé les noms des pays dans chacun des ensembles de données selon les difficultés décrites dans la Section 5.1. L'analyse exploratoire des données (Section 5.2) a été réalisée par JB.  
+
+Les apprentissages supervisés et non supervisés ont été menés en parallèle selon une approche agile (Scrum), en organisant le travail en sprints et en réajustant régulièrement les objectifs. JM et, dans une moindre mesure, JB ont travaillé sur le développement du réseau de neurones (Section 5.4.2). CR et, dans une moindre mesure, JB ont pris en charge la classification non supervisée (Section 5.3), à l'exception des Cartes auto-organisatrices (Section 5.3.7), développées par JM, ainsi que la construction des arbres de décision, forêts aléatoires et autres méthodes de boosting (Section 5.4.1).  
+
+La rédaction du rapport a été réalisée conjointement par JM, CR et JB. Les outils de communication utilisés incluaient WhatsApp, Discord et Teams, les e-mails traditionnels. Le développement s'est fait individuellement ainsi que par *pair programming* et *real-time collaborative coding*. 
 
 ### 4.2 Approches Supervisée et Non Supervisée
 
+L’apprentissage supervisé et l’apprentissage non supervisé diffèrent principalement par la nature des données utilisées et les objectifs visés.  
 
+Dans l’apprentissage supervisé, le modèle est entraîné à partir de données étiquetées, où chaque entrée est associée à une sortie connue. Cette approche est utilisée pour des tâches telles que la **régression** (prédiction de valeurs continues) ou la **classification supervisée** (catégorisation d’observations selon des classes définies).  
 
----
+En revanche, l’apprentissage non supervisé travaille sur des données non étiquetées, sans information préalable sur les résultats attendus. Il vise à identifier des structures cachées ou des groupes dans les données. Cette méthode inclut des techniques comme la **classification non supervisée** (regrouper des données en clusters) et l’**analyse exploratoire** (révéler des relations ou des patterns sous-jacents).  
+
+Ainsi, l’apprentissage supervisé répond à des questions spécifiques avec des données préalablement annotées, tandis que l’apprentissage non supervisé explore les données pour en extraire des structures ou insights implicites. Ce sont ces deux méthodes qui ont été employées dans ce travail.
+
 ## 5. Implémentation
 
 ### 5.1 Préparation des Données
-La préparation des données a constitué une étape cruciale du projet, notamment en raison des divergences observées dans les noms des pays selon les différentes sources utilisées. Ces conflits provenaient des différences linguistiques (anglais, français), des variations dans la nomenclature des pays (utilisation de noms officiels ou abrégés), et des évolutions géopolitiques au fil du temps (changements de noms de pays, disparition ou création de nouvelles entités étatiques).  
+La préparation des données a constitué une étape essentielle du projet, notamment en raison des divergences dans les noms des pays selon les différentes sources utilisées. Ces conflits découlaient de plusieurs facteurs : différences linguistiques (anglais, français), variations dans la nomenclature des pays (noms officiels ou abrégés), et évolutions géopolitiques au fil du temps (changements de noms, disparition ou création de nouvelles entités étatiques).  
 
-Les données issues de **Gapminder** et de **Kaggle** ont nécessité une harmonisation manuelle, ce qui a représenté un effort conséquent. Par exemple :  
-- Certains pays étaient désignés par des noms différents dans les deux bases, tels que "Côte d'Ivoire" (français) et "Ivory Coast" (anglais).  
-- D'autres pays étaient répertoriés sous des appellations historiques ou obsolètes, comme "URSS" pour des données antérieures à sa dissolution, tandis que les données récentes utilisaient les noms des pays indépendants issus de son éclatement.  
-- Dans certains cas, des entités telles que "République tchèque" et "Tchécoslovaquie" coexistaient dans les jeux de données, nécessitant un regroupement ou une distinction en fonction de la période.  
+Les données provenant de **Gapminder** et de **Kaggle** ont nécessité une harmonisation manuelle, un processus particulièrement exigeant. Par exemple :  
+- Certains pays étaient désignés par des noms différents selon les bases de données, comme "Côte d'Ivoire" en français et "Ivory Coast" en anglais.  
+- D'autres étaient répertoriés sous des appellations historiques ou obsolètes, telles que "URSS" pour des données antérieures à sa dissolution, alors que les données récentes utilisaient les noms des États indépendants issus de son éclatement.  
+- Certaines entités, comme "République tchèque" et "Tchécoslovaquie", apparaissaient simultanément dans les jeux de données, nécessitant une distinction ou un regroupement selon la période historique concernée.  
 
-Cette étape a nécessité plusieurs jours de travail pour ajuster manuellement la liste des pays, garantir leur uniformité, et aligner les données sur une nomenclature commune. Une attention particulière a été portée aux subtilités historiques et linguistiques afin de minimiser les erreurs d'interprétation et d'assurer la fiabilité des analyses.  
+Cette étape a exigé plusieurs jours de travail pour aligner manuellement les noms des pays sur une nomenclature uniforme. Une attention particulière a été accordée aux subtilités linguistiques et historiques afin de limiter les erreurs d’interprétation et de garantir la cohérence des analyses. Ce travail minutieux a permis de renforcer la fiabilité et la comparabilité des données. 
 
 ### 5.2 Analyse Exploratoire des Données 
  
-La relation entre le attributs, les pays et les performances aux JO sont difficiles à observer visuellement. Pour cette raison nous avons moyenné pour chacun des pays les attributs et le score. 
+La relation entre les attributs, les pays et les performances aux JO sont difficiles à observer visuellement, comme le montre le graphique par paires (pair-plot) présentant une grille de sous-graphes où chaque variable numérique est tracée contre chaque autre variable, et les graphes dans la diagonale présentant la distribution univariée de chaque variable.
 
-| Pays               | Population   | Fertilité    | sig_fertility | child       | sig_child   | PIB par habitant | sig_gdp     | Temperature   | Précipitations | Saisonalité  | Aridité     | score    | sig_score    |
-|--------------------|-------------|--------------|---------------|-------------|-------------|------------------|-------------|---------------|----------------|--------------|-------------|----------|-------------|
-| USA                | 0.227 | 0.147 | x   | 0.02728728  | 0.010453432 | 0.317685243      | 0.035464536 | 0.481818182   | 0.463636364    | 0.4          | 0.395454545 | 213.125  | 13.60081405 |
-| Germany            | 0.063 | 0.07 | x   | 0.009224227 | 0.003280202 | 0.274660395      | 0.031615295 | 0.333333333   | 0.333333333    | 0.3          | 0.333333333 | 152.375  | 31.01583697 |
-| China              | 1 | 0.10 | x | 0.105743496 | 0.040484548 | 0.039441399      | 0.024236932 | 0.43125       | 0.45625        | 0.36875      | 0.35        | 133.5    | 26.14246682 |
-| Australia          | 0.016 | 0.13 | x | 0.012043604 | 0.003191327 | 0.252701518      | 0.020309906 | 0.6           | 0.583333333    | 0.475        | 0.466666667 | 115.25   | 19.47709277 |
-| Russia             | 0.112 | 0.08 | x | 0.053476517 | 0.008833567 | 0.120114151      | 0.016545476 | 0.366666667   | 0.36           | 0.326666667  | 0.34        | 111.75   | 72.10458674 |
-| Great Britain      | 0.0471 | 0.12 | x | 0.014664793 | 0.005237619 | 0.239166775      | 0.025311459 | 0.45          | 0.55           | 0.45         | 0.45        | 110.375  | 28.00988346 |
-| France             | 0.0471 | 0.140107992  | 0.026314226   | 0.010551804 | 0.005078353 | 0.247743133      | 0.036498175 | 0.625         | 0.675          | 0.575        | 0.375       | 106.5    | 5.806400409 |
-| Italy              | 0.045 | 0.056067033  | 0.018449868   | 0.00895299  | 0.001312416 | 0.251034083      | 0.049381484 | 0.4625        | 0.5            | 0.4125       | 0.4         | 90.75    | 12.08008988 |
-| Japan              | 0.097 | 0.062875866  | 0.014141373   | 0.003712824 | 0.001795104 | 0.233179106      | 0.046170304 | 0.516666667   | 0.533333333    | 0.466666667  | 0.4         | 84.875   | 18.58907129 |
-| Canada             | 0.025 | 0.097461137  | 0.012213047   | 0.016421301 | 0.008382053 | 0.259074901      | 0.030000094 | 0.358333333   | 0.358333333    | 0.325        | 0.35        | 71.375   | 10.41890452 |
-| South Korea        | 0.0367 | 0.049571993  | 0.033977696   | 0.014276859 | 0.004915931 | 0.171994483      | 0.023403039 | 0.45          | 0.466666667    | 0.416666667  | 0.35        | 68       | 6.187545094 |
-| Poland             | 0.029 | 0.074736976  | 0.029482876   | 0.024921788 | 0.005387387 | 0.118569014      | 0.024364297 | 0.466666667   | 0.433333333    | 0.4          | 0.433333333 | 64.625   | 9.318759881 |
-| Spain              | 0.0334 | 0.050388407  | 0.018245106   | 0.008318469 | 0.001295534 | 0.20878213       | 0.025508513 | 0.5           | 0.566666667    | 0.433333333  | 0.5         | 60.875   | 9.218575967 |
-| Hungary            | 0.0077 | 0.077290196  | 0.036251145   | 0.024722662 | 0.003922795 | 0.133428535      | 0.011814265 | 0.5           | 0.5            | 0.45         | 0.45        | 57.25    | 11.79285498 |
-| Ukraine            | 0.037 | 0.060962825  | 0.024075875   | 0.056593534 | 0.005634556 | 0.064067974      | 0.018340372 | 0.483333333   | 0.466666667    | 0.416666667  | 0.45        | 56.875   | 25.36835768 |
-| Netherlands        | 0.0125 | 0.109236967  | 0.022825091   | 0.01150047  | 0.003631768 | 0.289872819      | 0.027381287 | 0.5           | 0.6            | 0.5          | 0.5         | 56.375   | 13.710658   |
-| Cuba               | 0.0085 | 0.092510991  | 0.016154994   | 0.022594292 | 0.003035092 | 0.033293222      | 0.006235419 | 0.8           | 0.833333333    | 0.7          | 0.233333333 | 53.375   | 13.59556125 |
-| Brazil             | 0.140 | 0.164777066  | 0.044931881   | 0.12364991  | 0.025332691 | 0.075583273      | 0.007427943 | 0.644444444   | 0.744444444    | 0.6          | 0.311111111 | 42       | 20.52872552 |
-| Sweden             | 0.0071 | 0.127464587  | 0.029377761   | 0.003191197 | 0.002863273 | 0.263575656      | 0.017553042 | 0.375         | 0.35           | 0.325        | 0.35        | 40.125   | 9.372261505 |
-| Belarus            | 0.0074 | 0.0774875    | 0.033962225   | 0.025858457 | 0.010981238 | 0.074173279      | 0.017102739 | 0.5           | 0.5            | 0.45         | 0.45        | 39.5     | 17.96822592 |
-| Romania            | 0.016 | 0.084490966  | 0.042490226   | 0.066148806 | 0.014395207 | 0.103245512      | 0.023607283 | 0.46          | 0.46           | 0.4          | 0.48        | 37.5     | 16.34450541 |
-| New Zealand        | 0.0032 | 0.155028409  | 0.012263782   | 0.021386144 | 0.008037205 | 0.215960769      | 0.017803561 | 0.333333333   | 0.4            | 0.333333333  | 0.333333333 | 32.5     | 8.451542547 |
-| Denmark            | 0.0042 | 0.125390764  | 0.021610259   | 0.010910354 | 0.005427115 | 0.298401012      | 0.037642199 | 0.5           | 0.6            | 0.5          | 0.5         | 30.875   | 5.303300859 |
-| Kazakhstan         | 0.0130 | 0.243607005  | 0.101765653   | 0.124913259 | 0.044476965 | 0.098191087      | 0.021214289 | 0.43          | 0.37           | 0.33         | 0.43        | 27.5     | 12.27075501 |
-| Bulgaria           | 0.0059 | 0.076610831  | 0.034730001   | 0.049981286 | 0.006319513 | 0.091066127      | 0.013625389 | 0.56          | 0.62           | 0.5          | 0.46        | 27.25    | 13.64603553 |
-| Czech Republic     | 0.0079 | 0.080122095  | 0.054042326   | 0.009556825 | 0.00425697  | 0.175510753      | 0.009384674 | 0.5           | 0.5            | 0.45         | 0.45        | 27.25    | 11.47357212 |
-| Greece             | 0.0082 | 0.067696508  | 0.02162121    | 0.013446818 | 0.006022487 | 0.176370738      | 0.030803322 | 0.56          | 0.62           | 0.5          | 0.46        | 25.375   | 17.75176048 |
-| Kenya              | 0.028 | 0.549660404  | 0.080825127   | 0.37075748  | 0.04755793  | 0.018599459      | 0.003098495 | 0.644444444   | 0.677777778    | 0.544444444  | 0.366666667 | 21.25    | 4.334248988 |
-| Turkey             | 0.054 | 0.204893891  | 0.04031417    | 0.12121092  | 0.046782542 | 0.112578298      | 0.01789757  | 0.5           | 0.522222222    | 0.444444444  | 0.444444444 | 20       | 6.414269806 |
-| Austria            | 0.0063 | 0.076583502  | 0.022920169   | 0.009906746 | 0.002457779 | 0.292369092      | 0.029833517 | 0.375         | 0.35           | 0.325        | 0.35        | 19.875   | 3.907410542 |
-| Belgium            | 0.0081 | 0.113065355  | 0.020654221   | 0.011485014 | 0.002531384 | 0.270094859      | 0.029450338 | 0.5           | 0.6            | 0.5          | 0.5         | 19.75    | 7.005100183 |
-| South Africa       | 0.039 | 0.251970045  | 0.046254482   | 0.278907287 | 0.065419443 | 0.068514271      | 0.004656853 | 0.518181818   | 0.536363636    | 0.390909091  | 0.5         | 19.125   | 8.659222994 |
-| Jamaica            | 0.00203 | 0.169854429  | 0.073761877   | 0.090532081 | 0.013227793 | 0.056563603      | 0.011959155 | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 18.875   | 5.276294696 |
-| Switzerland        | 0.0058 | 0.084950803  | 0.021977101   | 0.011468319 | 0.005498468 | 0.368427322      | 0.044613019 | 0.35          | 0.375          | 0.325        | 0.35        | 18.625   | 5.755432217 |
-| Mexico             | 0.081 | 0.237222234  | 0.045196276   | 0.097608572 | 0.00865072  | 0.108356244      | 0.016132579 | 0.6           | 0.621428571    | 0.485714286  | 0.428571429 | 18       | 5.318431563 |
-| Norway             | 0.00363 | 0.131127284  | 0.006976586   | 0.004615992 | 0.00106268  | 0.358138628      | 0.043847154 | 0.333333333   | 0.333333333    | 0.3          | 0.316666667 | 17.375   | 5.153015761 |
-| Uzbekistan         | 0.021 | 0.301904019  | 0.0923144     | 0.214725196 | 0.033137168 | 0.0246702        | 0.006612288 | 0.45          | 0.425          | 0.35         | 0.5125      | 17.375   | 8.484229067 |
-| Azerbaijan         | 0.0067 | 0.163812575  | 0.044615989   | 0.246142618 | 0.063028967 | 0.049111012      | 0.020558333 | 0.5           | 0.5            | 0.425        | 0.4375      | 16.625   | 9.620476674 |
-| Argentina          | 0.030 | 0.220028535  | 0.03955074    | 0.069991244 | 0.002393544 | 0.119481932      | 0.014018854 | 0.423076923   | 0.469230769    | 0.338461538  | 0.453846154 | 16.375   | 2.973093627 |
-| Croatia            | 0.0033 | 0.086537343  | 0.028709607   | 0.01984215  | 0.002485975 | 0.128100402      | 0.010873225 | 0.575         | 0.675          | 0.525        | 0.475       | 16.125   | 3.720119046 |
-| Iran               | 0.056 | 0.189359397  | 0.102710898   | 0.120244856 | 0.01780251  | 0.074931158      | 0.005146098 | 0.4875        | 0.4125         | 0.325        | 0.5625      | 14.875   | 3.796144661 |
-| Lithuania          | 0.0025 | 0.087116575  | 0.030847598   | 0.027400951 | 0.007212002 | 0.127200747      | 0.033259116 | 0.5           | 0.5            | 0.45         | 0.45        | 14.375   | 3.461523199 |
-| India              | 0.88 | 0.294010269  | 0.073512791   | 0.346837568 | 0.037552085 | 0.018691567      | 0.006296145 | 0.468421053   | 0.484210526    | 0.373684211  | 0.384210526 | 14.25    | 7.887603293 |
-| Finland            | 0.0040 | 0.117189979  | 0.008926824   | 0.001597927 | 0.001418522 | 0.250659485      | 0.017658153 | 0.333333333   | 0.266666667    | 0.266666667  | 0.3         | 14.125   | 6.599512969 |
-| Georgia            | 0.0033 | 0.141725383  | 0.048486777   | 0.102141589 | 0.037345549 | 0.044866074      | 0.015792896 | 0.45          | 0.433333333    | 0.4          | 0.366666667 | 14       | 6.279217422 |
-| North Korea        | 0.0185 | 0.154246424  | 0.018548323   | 0.177975503 | 0.051276668 | 0.009513198      | 0.003841105 | 0.34          | 0.3            | 0.3          | 0.28        | 13.875   | 6.937218463 |
-| Colombia           | 0.032 | 0.197064849  | 0.055055283   | 0.096169531 | 0.00616974  | 0.065695975      | 0.007775463 | 0.644444444   | 0.677777778    | 0.544444444  | 0.366666667 | 13.625   | 8.034523721 |
-| Slovakia           | 0.0041 | 0.079925955  | 0.040440331   | 0.027542455 | 0.002617979 | 0.124149981      | 0.018868687 | 0.466666667   | 0.433333333    | 0.4          | 0.433333333 | 13.625   | 6.300510183 |
-| Slovenia           | 0.00155 | 0.075226347  | 0.040991715   | 0.006008882 | 0.002763456 | 0.175993035      | 0.008568691 | 0.5           | 0.5            | 0.45         | 0.45        | 13.5     | 3.207134903 |
-| Thailand           | 0.050 | 0.101684257  | 0.023139534   | 0.072468391 | 0.010399325 | 0.074176045      | 0.007054593 | 0.775         | 0.825          | 0.725        | 0.225       | 13.375   | 4.068608046 |
-| Indonesia          | 0.18 | 0.236168476  | 0.021017405   | 0.208448451 | 0.016437523 | 0.043063748      | 0.007524466 | 0.78          | 0.82           | 0.72         | 0.26        | 13.25    | 2.121320344 |
-| Ethiopia           | 0.06 | 0.726952238  | 0.120769129   | 0.531948134 | 0.073077979 | 0.003402807      | 0.003166219 | 0.588888889   | 0.644444444    | 0.488888889  | 0.388888889 | 13.125   | 4.823676725 |
-| Egypt              | 0.064 | 0.374207806  | 0.032766779   | 0.181378839 | 0.027679169 | 0.05040767       | 0.002975264 | 0.5           | 0.233333333    | 0.166666667  | 0.733333333 | 12.75    | 9.452890714 |
-| Portugal           | 0.0079 | 0.069607163  | 0.016330427   | 0.013512546 | 0.004760622 | 0.180531069      | 0.025508225 | 0.6           | 0.7            | 0.5          | 0.45        | 12.625   | 5.153015761 |
-| Mongolia           | 0.0020 | 0.263499279  | 0.076399013   | 0.200175936 | 0.077781058 | 0.037000874      | 0.012249351 | 0.266666667   | 0.183333333    | 0.166666667  | 0.4         | 12.25    | 6.11204899  |
-| Algeria            | 0.026 | 0.316208925  | 0.075100438   | 0.157217748 | 0.015455829 | 0.056437161      | 0.00443705  | 0.5           | 0.36           | 0.24         | 0.64        | 10.75    | 2.434865793 |
-| Ireland            | 0.0032 | 0.147326541  | 0.016645582   | 0.011347426 | 0.002502277 | 0.319672515      | 0.079709926 | 0.5           | 0.6            | 0.5          | 0.5         | 10.5     | 5.014265364 |
-| Nigeria            | 0.12 | 0.739153142  | 0.023416376   | 0.822305082 | 0.107349622 | 0.020383944      | 0.002725677 | 0.65          | 0.55           | 0.45         | 0.45        | 10.375   | 3.814914341 |
-| Serbia             | 0.0057 | 0.074177642  | 0.026628569   | 0.037869494 | 0.010891702 | 0.072838304      | 0.011948612 | 0.533333333   | 0.566666667    | 0.5          | 0.466666667 | 9.5      | 10.74376896 |
-| Venezuela          | 0.020 | 0.250822403  | 0.039177642   | 0.10960241  | 0.053804729 | 0.09823887       | 0.040140459 | 0.642857143   | 0.657142857    | 0.528571429  | 0.371428571 | 9.375    | 3.335416016 |
-| Armenia            | 0.0024 | 0.121849029  | 0.049211676   | 0.106752167 | 0.014767492 | 0.041279227      | 0.016043361 | 0.48          | 0.46           | 0.42         | 0.44        | 9.125    | 4.969550138 |
-| Israel             | 0.0052 | 0.306177683  | 0.049126901   | 0.013760557 | 0.001360538 | 0.197047989      | 0.019334486 | 0.566666667   | 0.466666667    | 0.3          | 0.566666667 | 9        | 6.369570517 |
-| Morocco            | 0.023 | 0.275078743  | 0.052033646   | 0.189452592 | 0.017488025 | 0.033320389      | 0.002876374 | 0.5           | 0.36           | 0.24         | 0.64        | 8.875    | 2.474873734 |
-| Hong Kong China    | 0.0052 | 0.020911716  | 0.020326642   | 0.00169861  | 0.00097987  | 0.272159296      | 0.017689712 | 0.43125       | 0.45625        | 0.36875      | 0.35        | 8.5      | 3.927922024 |
-| Estonia            | 0.0010 | 0.09095528   | 0.03097969    | 0.021071161 | 0.013054019 | 0.141608157      | 0.024261855 | 0.5           | 0.4            | 0.4          | 0.4         | 8.125    | 2.416461403 |
-| Malaysia           | 0.020 | 0.230210046  | 0.077188316   | 0.034814382 | 0.00937092  | 0.110913243      | 0.010362403 | 0.95          | 0.95           | 0.9          | 0.15        | 7.625    | 3.583194903 |
-| Tunisia            | 0.0079 | 0.195879508  | 0.052077122   | 0.116702382 | 0.017906104 | 0.050112802      | 0.001579733 | 0.5           | 0.36           | 0.24         | 0.64        | 7.625    | 5.153015761 |
-| Latvia             | 0.0017 | 0.080198554  | 0.042802754   | 0.035452482 | 0.012830944 | 0.111945305      | 0.026144539 | 0.5           | 0.5            | 0.45         | 0.45        | 7.5      | 2.138089935 |
-| Moldova            | 0.0029 | 0.120324679  | 0.039192359   | 0.104854359 | 0.016567354 | 0.045100297      | 0.013472683 | 0.533333333   | 0.566666667    | 0.5          | 0.466666667 | 6.125    | 3.720119046 |
-| Bahamas            | 0.00026 | 0.151150963  | 0.047832062   | 0.05980047  | 0.008602429 | 0.209949567      | 0.052315016 | 0.7           | 0.7            | 0.6          | 0.3         | 5.625    | 2.065879266 |
-| Dominican Republic | 0.0071 | 0.264191264  | 0.031746633   | 0.187112293 | 0.02969617  | 0.063387004      | 0.01249587  | 0.78          | 0.82           | 0.72         | 0.26        | 5.25     | 3.370036032 |
-| Ecuador            | 0.011 | 0.271261663  | 0.061850549   | 0.109445637 | 0.015138275 | 0.051423237      | 0.006687484 | 0.65          | 0.7375         | 0.6          | 0.3125      | 4.875    | 4.086126353 |
-| Trinidad and Tobago| 0.00104 | 0.117783843  | 0.025884998   | 0.116526095 | 0.022767947 | 0.124988884      | 0.017965754 | 0.8           | 0.8            | 0.7          | 0.25        | 4.75     | 2.604940361 |
-| Kyrgyzstan         | 0.0041 | 0.31167292   | 0.05500734    | 0.176782825 | 0.02464987  | 0.021239321      | 0.00551735  | 0.375         | 0.3            | 0.2875       | 0.45        | 4.5      | 3.422613872 |
-| Qatar              | 0.0010 | 0.248893527  | 0.097028931   | 0.0396375   | 0.002507345 | 0.483073915      | 0.063390306 | 0.6           | 0.2            | 0.1          | 0.8         | 3.5      | 0.9258201   |
-| Philippines        | 0.068 | 0.355001499  | 0.07880694    | 0.174898718 | 0.033489789 | 0.030543401      | 0.004361407 | 0.76          | 0.86           | 0.7          | 0.2         | 2.75     | 2.121320344 |
-| Cameroon           | 0.014 | 0.662789391  | 0.037122163   | 0.601139149 | 0.07036557  | 0.016028299      | 0.002298588 | 0.72          | 0.64           | 0.56         | 0.38        | 2.625    | 1.505940617 |
-| Tajikistan         | 0.0056 | 0.411325611  | 0.066070704   | 0.3011951   | 0.051888249 | 0.010857464      | 0.005426467 | 0.4125        | 0.3875         | 0.325        | 0.4625      | 2.5      | 1.772810521 |
-| Uganda             | 0.023 | 0.775649681  | 0.074798017   | 0.502831249 | 0.100300393 | 0.006098662      | 0.001844921 | 0.716666667   | 0.75           | 0.65         | 0.3         | 2.5      | 2.20389266  |
-| Chile              | 0.0126 | 0.14054406   | 0.041510508   | 0.036271608 | 0.006562894 | 0.111587835      | 0.007868137 | 0.4125        | 0.3625         | 0.2875       | 0.525       | 2.25     | 1.281739889 |
-| Cyprus             | 0.00080 | 0.103606981  | 0.047085505   | 0.009310672 | 0.004317767 | 0.19777133       | 0.01619569  | 0.55          | 0.6            | 0.4          | 0.45        | 2.125    | 1.246423455 |
-| Pakistan           | 0.14 | 0.579391865  | 0.093251084   | 0.501427771 | 0.056970387 | 0.020817112      | 0.002885227 | 0.457142857   | 0.428571429    | 0.35         | 0.478571429 | 2.125    | 1.457737974 |
-| Ghana              | 0.018 | 0.527285006  | 0.055234652   | 0.400744853 | 0.01952552  | 0.01756536       | 0.003746677 | 0.666666667   | 0.666666667    | 0.566666667  | 0.333333333 | 2        | 1.069044968 |
-| Zimbabwe           | 0.0098 | 0.464024997  | 0.040637185   | 0.412922375 | 0.082830925 | 0.011059894      | 0.005608373 | 0.52          | 0.56           | 0.38         | 0.42        | 2        | 2.138089935 |
-| Namibia            | 0.0015 | 0.442937418  | 0.057790356   | 0.296539626 | 0.045957542 | 0.046719206      | 0.005102021 | 0.45          | 0.25           | 0.175        | 0.7         | 1.875    | 1.125991626 |
-| Vietnam            | 0.063 | 0.18916338   | 0.061301079   | 0.131304501 | 0.018910694 | 0.02862934       | 0.011164621 | 0.7           | 0.766666667    | 0.633333333  | 0.266666667 | 1.875    | 2.100170061 |
-| Guatemala          | 0.010 | 0.440220965  | 0.120493289   | 0.205474888 | 0.008678545 | 0.040432462      | 0.005016516 | 0.7           | 0.8            | 0.66         | 0.26        | 1.75     | 1.281739889 |
-| Kuwait             | 0.0020 | 0.238387884  | 0.068739998   | 0.042609051 | 0.007222398 | 0.321102182      | 0.075144724 | 0.6           | 0.2            | 0.1          | 0.8         | 1.75     | 1.281739889 |
-| Zambia             | 0.010 | 0.682703645  | 0.056204822   | 0.552498745 | 0.087509291 | 0.01199601       | 0.00202393  | 0.5           | 0.65           | 0.45         | 0.325       | 1.75     | 1.669045921 |
-| Botswana           | 0.0014 | 0.35171633   | 0.045996035   | 0.295061341 | 0.061968795 | 0.070632174      | 0.003884919 | 0.5           | 0.3            | 0.2          | 0.65        | 1.625    | 1.187734939 |
-| Eritrea            | 0.0020 | 0.603933862  | 0.077361526   | 0.350891697 | 0.040559193 | 0.007179021      | 0.002959734 | 0.566666667   | 0.433333333    | 0.333333333  | 0.533333333 | 1.5      | 1.511857892 |
-| Iceland            | 0.00023 | 0.162351409  | 0.015841205   | 0.00092465  | 0.001027511 | 0.268826245      | 0.01497927  | 0.25          | 0.3            | 0.25         | 0.25        | 1.5      | 1.069044968 |
-| Albania            | 0.0023 | 0.154583738  | 0.066823733   | 0.079621101 | 0.019295008 | 0.046182542      | 0.01390888  | 0.55          | 0.6            | 0.475        | 0.45        | 1.375    | 1.060660172 |
-| Turkmenistan       | 0.0040 | 0.316161311  | 0.052095864   | 0.336688456 | 0.040684947 | 0.055451341      | 0.02243817  | 0.475         | 0.4            | 0.275        | 0.6         | 1.375    | 1.505940617 |
-| Montenegro         | 0.00047 | 0.137958993  | 0.02413669    | 0.027393071 | 0.014723333 | 0.084644879      | 0.007265722 | 0.575         | 0.625          | 0.5          | 0.45        | 1.25     | 1.488047618 |
-| Angola             | 0.016 | 0.812826147  | 0.031345219   | 0.747520956 | 0.095061281 | 0.031051485      | 0.004975276 | 0.516666667   | 0.483333333    | 0.333333333  | 0.5         | 1.125    | 0.640869944 |
-| Costa Rica         | 0.0032 | 0.175337306  | 0.061386459   | 0.043924131 | 0.009077669 | 0.087205348      | 0.007093522 | 0.775         | 0.8            | 0.725        | 0.275       | 1.125    | 1.125991626 |
-| Ivory Coast        | 0.016 | 0.679470342  | 0.041038052   | 0.615232905 | 0.061670498 | 0.021108238      | 0.004953551 | 0.8           | 0.8            | 0.7          | 0.25        | 1.125    | 1.356202682 |
-| Papua New Guinea   | 0.005 | 0.480090805  | 0.055572792   | 0.324323333 | 0.047673451 | 0.017764517      | 0.005826293 | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 1.125    | 0.83452296  |
-| Tanzania           | 0.032 | 0.679032212  | 0.028743056   | 0.476147798 | 0.058246089 | 0.007177823      | 0.001967793 | 0.65          | 0.75           | 0.6          | 0.2875      | 1.125    | 1.642080562 |
-| Uruguay            | 0.0025 | 0.167634992  | 0.02565958    | 0.053463645 | 0.003890575 | 0.102476139      | 0.011833916 | 0.55          | 0.65           | 0.55         | 0.5         | 1.125    | 0.83452296  |
-| Iraq               | 0.022 | 0.544996078  | 0.06767867    | 0.185727426 | 0.021850976 | 0.039424076      | 0.009353191 | 0.5           | 0.44           | 0.34         | 0.5         | 1        | 1.309307341 |
-| Mozambique         | 0.016 | 0.706263686  | 0.023159709   | 0.668694577 | 0.074922141 | 0.001566252      | 0.001817245 | 0.5           | 0.65           | 0.45         | 0.325       | 1        | 0.755928946 |
-| Senegal            | 0.009 | 0.636731252  | 0.048343816   | 0.433099627 | 0.077438252 | 0.013597835      | 0.002197807 | 0.625         | 0.55           | 0.425        | 0.45        | 1        | 1.069044968 |
-| Syria              | 0.014 | 0.419440917  | 0.086710815   | 0.095556045 | 0.015627197 | 0.033433793      | 0.014548147 | 0.5           | 0.4            | 0.283333333  | 0.616666667 | 1        | 1.069044968 |
-| UAE                | 0.004 | 0.186742428  | 0.134323127   | 0.036687578 | 0.00697308  | 0.494866628      | 0.170660098 | 0.6           | 0.2            | 0.1          | 0.8         | 1        | 1.069044968 |
-| Burundi            | 0.006 | 0.825107697  | 0.053460974   | 0.568262893 | 0.073181697 | 0.002101052      | 0.002172606 | 0.55          | 0.75           | 0.5          | 0.25        | 0.875    | 0.83452296  |
-| Luxembourg         | 0.00037 | 0.098358253  | 0.01319814    | 0.004362246 | 0.001495961 | 0.584011546      | 0.026890196 | 0.5           | 0.6            | 0.5          | 0.5         | 0.875    | 0.83452296  |
-| Peru               | 0.021  | 0.260459333  | 0.058286517   | 0.138275624 | 0.042340922 | 0.048330713      | 0.007731798 | 0.518181818   | 0.518181818    | 0.4          | 0.4         | 0.875    | 0.83452296  |
-| Bosnia and Herzegovina | 0.0029 | 0.068885745  | 0.036228863   | 0.030782474 | 0.004087805 | 0.047546307      | 0.017678483 | 0.575         | 0.625          | 0.5          | 0.45        | 0.75     | 0.707106781 |
-| Myanmar            | 0.0361 | 0.25078635   | 0.044963678   | 0.381200239 | 0.044449522 | 0.009660847      | 0.006591804 | 0.475         | 0.6            | 0.4375       | 0.2875      | 0.75     | 1.164964745 |
-| Panama             | 0.0026 | 0.254367946  | 0.010871974   | 0.099985066 | 0.013207626 | 0.115968977      | 0.022260701 | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 0.75     | 0.88640526  |
-| El Salvador        | 0.0046 | 0.251931322  | 0.087705978   | 0.117296572 | 0.021675927 | 0.03980804       | 0.003336152 | 0.7           | 0.7            | 0.6          | 0.3         | 0.625    | 0.916125381 |
-| Nicaragua          | 0.0041 | 0.30103865   | 0.077850372   | 0.137175483 | 0.022901968 | 0.023175274      | 0.002010857 | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 0.625    | 0.744023809 |
-| Saudi Arabia       | 0.0163 | 0.387758631  | 0.142541263   | 0.069220076 | 0.021743549 | 0.254454388      | 0.041940875 | 0.55          | 0.15           | 0.1          | 0.85        | 0.625    | 0.744023809 |
-| Congo Dem. Rep.    | 0.05 | 0.85100422   | 0.056792475   | 0.68008459  | 0.052390534 | 0.002231575      | 0.002164587 | 0.85          | 0.875          | 0.775        | 0.2         | 0.5      | 0.755928946 |
-| Fiji               | 0.00066 | 0.286708113  | 0.029128076   | 0.121405099 | 0.050730646 | 0.056813258      | 0.008103503 | 0.95          | 0.95           | 0.9          | 0.15        | 0.5      | 0.755928946 |
-| Gabon              | 0.0012 | 0.51264883   | 0.043585507   | 0.347174078 | 0.033498453 | 0.091007801      | 0.028019389 | 0.85          | 0.875          | 0.775        | 0.2         | 0.5      | 0.755928946 |
-| Honduras           | 0.0058 | 0.405013668  | 0.113103883   | 0.138542143 | 0.009533154 | 0.024623343      | 0.002818925 | 0.8           | 0.84           | 0.74         | 0.26        | 0.5      | 0.755928946 |
-| Jordan             | 0.005 | 0.430001103  | 0.077131009   | 0.106319971 | 0.010698908 | 0.055964151      | 0.009010739 | 0.5           | 0.36           | 0.24         | 0.64        | 0.5      | 0.755928946 |
-| Sudan              | 0.025 | 0.659525303  | 0.030730404   | 0.447729822 | 0.035247927 | 0.02046415       | 0.002228793 | 0.566666667   | 0.433333333    | 0.333333333  | 0.533333333 | 0.5      | 0.755928946 |
-| Burkina Faso       | 0.011 | 0.762503443  | 0.065860348   | 0.687311573 | 0.060970736 | 0.005828702      | 0.001538851 | 0.566666667   | 0.433333333    | 0.333333333  | 0.533333333 | 0.375    | 0.51754917  |
-| Lebanon            | 0.0037 | 0.233522068  | 0.034963187   | 0.059415716 | 0.012840242 | 0.080741693      | 0.011285829 | 0.6           | 0.7            | 0.5          | 0.45        | 0.375    | 0.51754917  |
-| Paraguay           | 0.0041 | 0.336227078  | 0.081762069   | 0.138591238 | 0.014520692 | 0.059108587      | 0.007776975 | 0.62          | 0.68           | 0.56         | 0.36        | 0.375    | 0.51754917  |
-| Sri Lanka          | 0.0152 | 0.191820269  | 0.014393462   | 0.061750157 | 0.026142628 | 0.045708496      | 0.010914541 | 0.9           | 0.933333333    | 0.833333333  | 0.166666667 | 0.375    | 0.51754917  |
-| Djibouti           | 0.00064 | 0.459935547  | 0.12670673    | 0.430756683 | 0.04257445  | 0.017474601      | 0.004648464 | 0.5           | 0.3            | 0.2          | 0.65        | 0.25     | 0.46291005  |
-| Guinea-Bissau      | 0.0011 | 0.661275244  | 0.069684282   | 0.697986277 | 0.029592815 | 0.006336712      | 0.001928954 | 0.75          | 0.8            | 0.65         | 0.25        | 0.25     | 0.46291005  |
-| Guyana             | 0.00058 | 0.285131257  | 0.027259465   | 0.203939885 | 0.027983133 | 0.054769205      | 0.020142274 | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 0.25     | 0.46291005  |
-| Haiti              | 0.0070 | 0.439887169  | 0.094272623   | 0.466008165 | 0.044587627 | 0.014544833      | 0.00350129  | 0.866666667   | 0.866666667    | 0.8          | 0.2         | 0.25     | 0.46291005  |
-| Madagascar         | 0.015 | 0.63226249   | 0.070174291   | 0.430964172 | 0.032769334 | 0.006109842      | 0.001862862 | 0.625         | 0.725          | 0.5875       | 0.325       | 0.25     | 0.46291005  |
-| Sierra Leone       | 0.0043 | 0.694068064  | 0.094840388   | 0.936841003 | 0.072812028 | 0.00478155       | 0.001706726 | 0.8           | 0.8            | 0.7          | 0.25        | 0.25     | 0.707106781 |
-| Somalia            | 0.008 | 0.962061844  | 0.031002283   | 0.831743058 | 0.178032731 | 0.001985282      | 0.001425712 | 0.6           | 0.5            | 0.366666667  | 0.5         | 0.25     | 0.46291005  |
-| Suriname           | 0.00039 | 0.270962116  | 0.015553317   | 0.135575128 | 0.006133796 | 0.09011896       | 0.013925132 | 0.95          | 0.95           | 0.9          | 0.15        | 0.25     | 0.46291005  |
-| Togo               | 0.0047 | 0.622216336  | 0.030110522   | 0.518617688 | 0.045389445 | 0.007344175      | 0.001977384 | 0.7           | 0.7            | 0.6          | 0.3         | 0.25     | 0.46291005  |
-| Bangladesh         | 0.109 | 0.288134108  | 0.079798091   | 0.318131869 | 0.067109496 | 0.01494896       | 0.005775828 | 0.7           | 0.766666667    | 0.633333333  | 0.266666667 | 0.125    | 0.353553391 |
-| Benin              | 0.007 | 0.717537155  | 0.037816863   | 0.64250715  | 0.090819341 | 0.012424871      | 0.001834036 | 0.55          | 0.55           | 0.45         | 0.4         | 0.125    | 0.353553391 |
-| Central African Republic | 0.0032 | 0.766754164  | 0.089066882   | 0.80868592  | 0.150714657 | 0.002847406      | 0.001497618 | 0.666666667   | 0.666666667    | 0.566666667  | 0.333333333 | 0.125    | 0.353553391 |
-| Eswatini           | 0.00081 | 0.419229094  | 0.072797765   | 0.465036623 | 0.128347796 | 0.035636138      | 0.003305615 | 0.5           | 0.65           | 0.45         | 0.325       | 0.125    | 0.353553391 |
-| Liberia            | 0.0027 | 0.659781761  | 0.068145642   | 0.686639518 | 0.129208273 | 0.004171454      | 0.002117319 | 0.8           | 0.8            | 0.7          | 0.25        | 0.125    | 0.353553391 |
-| Mali               | 0.011 | 0.86491118   | 0.021429004   | 0.782023538 | 0.037461278 | 0.007355229      | 0.000901642 | 0.566666667   | 0.433333333    | 0.333333333  | 0.533333333 | 0.125    | 0.353553391 |
-| Oman               | 0.0022 | 0.399762239  | 0.144967708   | 0.064915817 | 0.012503684 | 0.209526808      | 0.032060266 | 0.6           | 0.2            | 0.1          | 0.8         | 0.125    | 0.353553391 |
-| Rwanda             | 0.007 | 0.637769346  | 0.115083344   | 0.487330953 | 0.190948036 | 0.004559076      | 0.002569982 | 0.533333333   | 0.7            | 0.5          | 0.333333333 | 0.125    | 0.353553391 |
-| Solomon Islands    | 0.00039 | 0.547387018  | 0.04804122    | 0.130025396 | 0.021044614 | 0.011265644      | 0.004267144 | 1             | 1              | 1            | 0.1         | 0.125    | 0.353553391 |
+![pair-plot](./figures/feature_selection/pair-plot.png)
 
+Toutes les données par pays et par années se superposent rendant l'interprétation difficile. Même lorsque les données sont filtrées par année, les graphiques sont très complexes à comprendre (non montré ici).
 
+Pour cette raison nous avons moyenné pour chacun des pays les attributs et le score aux JO et décidé de faire des histogrammes bien choisis.
+
+**Population (pop)**
+
+La figure ci-dessous montre la population moyenne des pays (entre 1992 et 2021, normalisée par rapport à la population moyenne de la Chine) et leurs performances aux JO (sous forme de score). L'histogramme en bleu illustre la distribution des populations des pays tandis que les points rouges mettent en évidence les scores olympiques.
+
+![histogram_population](./figures/feature_selection/hist-pop.png)
+
+Les performances aux JO semblent en grande partie découplées de la population. Par exemple, les États-Unis et la Chine obtiennent des scores élevés malgré des tailles de population différentes. À l'inverse, des pays comme l'Inde, avec une population élevée, enregistrent un score relativement bas. La corrélation entre population et score olympique est donc limitée, avec certains pays comme l'Australie, l'Allemagne et le Royaume-Uni obtenant des scores élevés malgré des populations faibles en comparaison de celles des leaders démographiques.
+
+Ce graphique illustre une disparité marquée entre les pays dans les deux dimensions. Les pays les plus performants aux JO sont souvent ceux disposant de ressources significatives pour le sport de haut niveau, indépendamment de leur population totale. Cette analyse met en lumière les limites de l'utilisation de la population comme facteur explicatif des performances olympiques.
+
+**PIB par habitant (capita ou gdp)**
+
+La figure suivante montre la relation entre le PIB par habitant moyen des pays (entre 1992 et 2021) et les performances aux JO. A nouveau, l'histogramme en bleu montre la distribution du PIB par habitant, tandis que les points rouges représentent les scores olympiques. 
+
+![histogram_gdp](./figures/feature_selection/hist-capita.png)
+
+La majorité des pays se situe dans la catégorie de faible PIB par habitant, avec une forte concentration dans des valeurs proches de zéro, indiquant une distribution très asymétrique. Certains pays, tels que la Suisse et le Luxembourg, affichent des PIB par habitant élevés, mais ces pays ne se démarquent pas particulièrement en termes de scores olympiques.
+
+Les performances aux JO semblent ne pas être directement proportionnelles au PIB par habitant. Les États-Unis, malgré un PIB par habitant modéré par rapport aux pays comme le Luxembourg ou la Suisse, dominent avec le score olympique le plus élevé. D'autres pays ayant un PIB par habitant relativement faible, tels que le Brésil, l'Indonésie ou le Pakistan, enregistrent également de faibles performances olympiques, bien que certaines exceptions soient visibles, notamment la Chine et la Russie, qui obtiennent des scores élevés tout en ayant des PIB par habitant modérés.
+
+Ce graphique met en évidence une absence de corrélation évidente entre le PIB par habitant et les performances olympiques. Les scores élevés semblent davantage refléter des investissements ciblés et des priorités politiques ou culturelles en faveur du sport de haut niveau, plutôt que des facteurs strictement économiques. La concentration des scores élevés parmi des pays économiquement divers souligne le rôle de facteurs multiples dans les succès aux JO, au-delà de la simple richesse par habitant.
+
+**Fertilité (fertility)**
+
+La fertilité et la performances aux JO sont montrées dans la figure ci-dessous. La distribution de la fertilité montre une fréquence élevée de pays avec des indices de fertilité faibles, principalement concentrée entre 0.1 et 0.3. Cela correspond à des pays développés où la natalité est généralement plus faible. En revanche, les pays ayant une fertilité plus élevée (supérieure à 0.6) se situent majoritairement dans des zones géographiques en développement.
+
+![histogram_fertility](./figures/feature_selection/hist-fertility.png)
+
+Les points rouges montrent que les scores aux JO sont généralement plus élevés dans les pays à faible fertilité. Les États-Unis, par exemple, se distinguent par un score olympique très élevé, tout comme d'autres pays développés tels que l'Allemagne, la Chine et la Russie. Ces pays, bien que caractérisés par des taux de fertilité faibles, bénéficient de ressources économiques et infrastructures sportives développées, ce qui pourrait expliquer leurs performances aux JO.
+
+En revanche, les pays avec des indices de fertilité élevés, comme la Somalie ou le Pakistan, affichent des scores olympiques proches de zéro. Cela pourrait refléter un accès limité aux infrastructures sportives ou des priorités économiques axées sur d'autres domaines. Quelques exceptions, comme le Brésil, montrent une fertilité modérée et des scores olympiques intermédiaires, suggérant une diversité de facteurs influençant ces résultats.
+
+Dans l’ensemble, cette figure illustre une corrélation négative apparente entre fertilité et performance olympique.
+
+**Mortalité infantile (child)**
+
+La distribution de la mortalité infantile montre que la majorité des pays se concentre dans la tranche des faibles taux de mortalité infantile, généralement inférieurs à 0.1, ce qui correspond à des nations développées bénéficiant de systèmes de santé avancés. Dans ces pays, les scores olympiques sont souvent élevés, comme en témoignent les performances des États-Unis, de l'Allemagne, de la Chine ou de la Russie. Ces résultats reflètent l’association fréquente entre un faible taux de mortalité infantile, des infrastructures robustes et une forte capacité à investir dans le sport de haut niveau.
+
+![histogram_child](./figures/feature_selection/hist-child.png)
+
+A contrario, les pays présentant des taux de mortalité infantile élevés, tels que la Sierra Leone ou le Pakistan, se situent dans des zones où les scores olympiques restent faibles, voire nuls. Ces observations soulignent les défis socio-économiques auxquels ces nations doivent faire face, tels qu’un accès limité aux soins de santé ou aux infrastructures sportives. Quelques exceptions, comme le Brésil, montrent des scores olympiques intermédiaires malgré une mortalité infantile modérée, ce qui pourrait refléter des disparités régionales au sein même du pays.
+
+Globalement, cette figure met en évidence une relation inverse entre la mortalité infantile et les performances olympiques, renforçant l’idée que des conditions sanitaires favorables sont souvent corrélées à un meilleur développement socio-économique et à une compétitivité accrue dans le domaine sportif.
+
+**Température moyenne**
+
+La figure ci-dessous explore les relations potentielles entre la température moyenne par pays et leur performance aux JO.
+
+![histogram_temperature](./figures/feature_selection/hist-temp.png)
+
+Une tendance remarquable est l'accumulation des scores élevés, tels que ceux des États-Unis et de l'Allemagne, au niveau des pays ayant des températures moyennes plus basses. À l’inverse, les pays situés dans des régions plus chaudes enregistrent des scores nettement plus faibles. Cela pourrait indiquer que les climats tempérés sont associés à une meilleure performance sportive, bien que cette observation reste à nuancer en considérant les nombreux autres facteurs influençant les résultats olympiques.
+
+La distribution des températures montre également une prédominance de pays autour de températures moyennes comprises entre 0.5 et 0.6. Cependant, aucune corrélation visuelle forte n'émerge entre cette distribution et les scores des JO, car les pays occupant cette plage de température affichent des performances variées, allant de scores modestes à des scores élevés. Des exceptions notables incluent des pays tropicaux, tels que le Brésil et l’Indonésie, qui, malgré des températures moyennes élevées, atteignent des scores moyens, témoignant probablement d’efforts sportifs ou de politiques spécifiques à ces nations.
+
+**Niveau moyen de précipitations**
+
+Les relations entre le niveau moyen de précipitations et les performances aux JO révèlent des tendances intéressantes, comme le montre la figure ci-dessus. L'histogramme en bleu indique une distribution relativement équilibrée des niveaux moyens de précipitations parmi les pays, avec une fréquence légèrement plus élevée autour des valeurs moyennes, comprises entre 0.4 et 0.6. Ces plages correspondent souvent à des zones tempérées où les conditions climatiques sont modérées. Les scores olympiques, montrent que les performances élevées sont majoritairement associées à des pays ayant un niveau de précipitations moyen ou légèrement inférieur à la médiane. 
+
+![hist-precipitation](./figures/feature_selection/hist-precipitation.png)
+
+Les États-Unis dominent les scores olympiques et présentent un niveau moyen de précipitations modéré. Des pays comme l'Allemagne, la Chine, la Russie et la France suivent un schéma similaire, suggérant que la variabilité des précipitations n'est pas un facteur limitant pour les investissements en infrastructures sportives et le développement des athlètes.
+
+En revanche, les pays situés aux extrêmes, des pays avec des précipitations très élevées ou des régions arides avec des précipitations très faibles, affichent des scores olympiques généralement faibles ou nuls. Cela pourrait refléter les défis environnementaux et économiques qui limitent leur participation et leurs performances aux compétitions internationales. Des exceptions, comme le Brésil et le Kenya (non montré sur la figure), montrent des scores olympiques modérés malgré des niveaux de précipitations légèrement plus élevés ou plus bas, indiquant que d'autres facteurs, tels que l'économie et la culture sportive, jouent également un rôle important.
+
+Ainsi, la corrélation entre le niveau moyen de précipitations et les performances olympiques est faible, tout en soulignant que les capacités d'adaptation et les investissements structurels permettent de surmonter les contraintes environnementales dans les pays les plus performants.
+
+**Saisonnalité moyenne**
+
+La relation entre la saisonnalité moyenne des pays et leurs performances aux Jeux Olympiques offre une perspective intéressante sur la manière dont les variations climatiques pourraient influencer les résultats sportifs, comme montré dans la figure ci-dessous.
+
+![hist-seasonality](./figures/feature_selection/hist-seasonality.png)
+
+Les pays affichant une saisonnalité moyenne faible, tels que les États-Unis et l’Allemagne, dominent en termes de scores, ce qui suggère une corrélation potentielle entre une faible variabilité climatique annuelle et des performances olympiques élevées. En revanche, des pays avec une forte saisonnalité (protoypes : îles Salomon ou Sierra Leone) enregistrent des scores significativement inférieurs.
+
+Il est notable que la majorité des pays se situe dans une plage de saisonnalité moyenne allant de 0.3 à 0.5, ce qui reflète une prédominance de nations issues de zones tempérées ou subtropicales. Cependant, la distribution des scores au sein de cette plage reste très variée. Par exemple, des pays comme la Chine et l’Australie atteignent des scores élevés, tandis que d’autres, comme le Pakistan ou la Roumanie, enregistrent des performances plus modestes.
+
+Les pays situés dans des régions tropicales ou équatoriales, caractérisés par des niveaux de saisonnalité extrêmes, tendent à afficher des scores faibles. Cependant, certaines exceptions, comme le Brésil, montrent que des efforts ciblés peuvent compenser ces défis climatiques.
+
+**Aridité moyenne**
+
+La relation entre l’aridité moyenne des pays et leur score aux JO, comme montré dans la figure ci-dessus, révèle des observations distinctives. Les pays affichant des scores élevés, tels que les États-Unis, l’Allemagne et la Chine, se situent dans une plage d’aridité modérée, comprise entre 0.2 et 0.4. Cela pourrait indiquer que les conditions climatiques modérément sèches ou équilibrées coïncident avec des performances olympiques supérieures.
+
+![hist-aridity](./figures/feature_selection/hist-aridity.png)
+
+Une concentration notable des pays se situe autour d'une aridité moyenne de 0.3 à 0.5, indépendamment de leur performance sportive. Cependant, les scores élevés semblent nettement moins fréquents dans les régions caractérisées par une aridité très faible ou très élevée. Par exemple, des pays comme les îles Salomon et la Sierra Leone, associés à des valeurs d’aridité inférieures à 0.2, affichent des scores proches de zéro. À l’autre extrême, l’Arabie saoudite, avec une aridité proche de 0.9, montre également des résultats modestes.
+
+Certains pays, comme l’Indonésie et le Brésil, illustrent une dispersion des scores dans des plages d’aridité similaires, mais sans atteindre les performances maximales. Cette observation suggère une disparité dans la répartition des scores, particulièrement marquée dans les zones climatiques intermédiaires. Le graphe met donc en évidence une concentration des meilleures performances dans une gamme climatique modérément sèche, tandis que les extrêmes d’aridité apparaissent moins favorables aux résultats olympiques.
 
 #### 5.2.1 Corrélations entre Variables
 
-Julien
+La figure ci-dessous montre la matrice de corrélation.
 
+![matrice_correlation](./figures/feature_selection/matrice_correlation.png)
+
+Cette matrice révèle les relations existant entre les différentes variables. Une forte corrélation positive est observée entre la fertilité et la mortalité infantile (0.88). De même, les variables climatiques montrent des interactions significatives entre elles, notamment entre la température moyenne et les précipitations moyennes (0.84), suggérant que des régions plus chaudes reçoivent souvent plus de pluie. Par ailleurs, la saisonnalité est également fortement corrélée à la température moyenne (0.84), ce qui peut refléter des différences saisonnières marquées dans les climats plus chauds. En revanche, une forte corrélation négative existe entre l’aridité et la saisonnalité (-0.82), indiquant que les régions arides ont une variabilité saisonnière plus faible, probablement en raison de climats constants. Une autre relation négative importante concerne l’aridité et la température moyenne (-0.77), les zones arides étant souvent plus froides en moyenne.
+
+En ce qui concerne les performances olympiques, mesurées par la variable score, des liens intéressants apparaissent. Les pays avec une population plus importante tendent à obtenir de meilleurs scores (0.34), probablement grâce à une base d’athlètes plus large. De manière similaire, le produit intérieur brut (gdp) présente une corrélation positive avec les performances (0.34), soulignant l’importance des ressources financières pour le développement des sports. A l’inverse, la fertilité (-0.33) et la mortalité infantile (-0.33) montrent des corrélations négatives avec les scores, ce qui peut refléter un lien indirect entre des niveaux de développement humain plus faibles et des performances moindres. Enfin, les interactions entre les variables climatiques et les données socio-économiques ainsi qu'avec les performances olympiques soulignent des tendances complexes à analyser. 
+
+Les facteurs économiques, tels que la population et le PIB, semblent jouer un rôle clé dans les performances sportives internationales, tandis que les variables climatiques, bien que corrélées entre elles, influencent peut-être indirectement les résultats via leur impact sur les conditions de vie ou les infrastructures. Ces observations mettent en lumière les multiples dimensions, tant sociales qu’environnementales, qui influencent les performances des nations aux JO.
 
 #### 5.2.2 Analyse en Composantes Principales
 
-Julien
+La figure ci-dessous présente les valeurs singulières (log<sub>10</sub>{diag(**S**)/max(**S**)}) normalisées (par rapport à la plus grande valeur singulière) de la matrice des attributs, tracées en fonction du nombre de facteurs. Ces valeurs sont obtenues à partir de la décomposition en valeurs singulières (SVD, **U S V<sup>T</sup>**) de la matrice des attributs (sans les scores aux JO).
 
-#### 5.2.3 Sélection d'Attributs
+![svd](./figures/feature_selection/svd.png)
 
-Pour cette section, on va étudier l'importace de chaque attribut pour les tâches de classification et de régression. Pour ce faire, on va utiliser les méthodes les scores de F-test, Information mutuelle et On va corroborer nos résultas obtenus grâce à l'analyse des nouds d'un arbre de décision.
+La méthode du *coude*, appliquée au tracé des valeurs singulières, suggère que la matrice des attributs contient **quatre dimensions indépendantes**. En effet, après le quatrième facteur, la décroissance des valeurs singulières devient beaucoup moins marquée, ce qui indique que les facteurs supplémentaires contribuent peu à la variance des données.
 
-##### Test F :
+Les matrices **U** et **V<sup>T</sup>**, respectivement associées aux vecteurs propres des espaces des lignes et des colonnes, n'ont pas été interprétées dans cette analyse. Cela est dû à un manque de signification évidente dans le contexte spécifique des données analysées. Cependant, si les attributs ou les observations avaient une interprétation claire, ces matrices auraient pu fournir des informations sur les structures latentes ou les relations sous-jacentes entre les dimensions des données.
 
-Le test F est une méthode statistique utilisée pour déterminer si des variables explicatives (features) sont significativement liées à la variable cible dans des tâches supervisées, notamment la régression ou la classification. Grâce à ce test, on obtient un score F pour chaque attribut qui permet de mesurer l'importance de cet attribut pour la tâche en question. Plus le score F est élevé, plus l'attribut est important pour la tâche. Le score F mesure la relation linéaire entre les variables explicatives et la variable cible.
+#### 5.2.3 Sélection d'Attributs  
 
+Cette section explore l’importance des attributs dans les tâches de classification et de régression. Plusieurs méthodes sont employées pour évaluer cette importance, notamment les scores de F-test, l’information mutuelle (MI), et l’analyse des nœuds d’un arbre de décision.  
 
-##### Information Mutuelle :
+**F-Test**  
+Le F-test est une méthode statistique utilisée pour évaluer la relation entre les variables explicatives (features) et la variable cible dans des tâches supervisées. Chaque attribut se voit attribuer un score F, mesurant son importance pour la tâche. Plus ce score est élevé, plus l’attribut est pertinent. Cette méthode est particulièrement adaptée pour détecter les relations linéaires entre les variables explicatives et la variable cible.  
 
-L'information mutuelle (MI) est une mesure issue de la théorie de l'information qui quantifie la dépendance entre deux variables aléatoires. En feature selection (sélection de variables), l'information mutuelle permet d'évaluer combien une variable explicative 
-X réduit l'incertitude sur la variable cible Y. Contrairement au F-test, l'information mutuelle détecte aussi bien les relations linéaires que non linéaires. Plus le score d'information mutuelle est élevé, plus l'attribut est important pour la tâche.
+**Information Mutuelle**  
+L’information mutuelle (MI) est une mesure issue de la théorie de l’information, utilisée pour quantifier la dépendance entre deux variables aléatoires. Contrairement au test F, l’information mutuelle permet de détecter à la fois les relations linéaires et non linéaires. Elle évalue dans quelle mesure une variable explicative réduit l’incertitude sur la variable cible. Un score élevé indique une forte importance de l’attribut pour la tâche.  
 
-Nous allons faire la distinction entre l'analyse des attributs pour la classification et pour la régression car les attributs importants peuvent différer selon la tâche.
+Une distinction est établie entre l’analyse des attributs pour la classification et pour la régression, car les attributs importants peuvent varier selon la nature de la tâche. Les résultats obtenus à partir des scores de F-test et de l’information mutuelle sont corroborés par l’analyse des nœuds d’un arbre de décision.  
 
-##### Comparaison de Test F et MI
+**Régression**  
 
-Nous allons faire la distinction entre l'analyse des attributs pour la classification et pour la régression car les attributs importants peuvent différer selon la tâche.
+| **Variable**         | **F-Score** | **MI-Score** | **Interprétation**                                   |
+|-----------------------|-------------|--------------|------------------------------------------------------|
+| **Taux de fertilité**         | 205.11      | 0.33         | Très significative avec un bon MI-score, indiquant une forte relation globale. |
+| **Population**        | 148.74      | 0.29         | Relation linéaire marquée, complétée par une dépendance non linéaire. |
+| **PIB/habitant**               | 147.52      | 0.24         | Relation significative, mais légèrement plus faible selon l’information mutuelle. |
+| **Mortalité infantile** | 142.81      | 0.29         | Corrélation importante, détectée aussi bien en F-Score qu’en MI. |
+| **Température**       | 106.67      | 0.42         | Forte relation non linéaire, comme le montre le MI-score élevé. |
+| **Précipitations**    | 34.36       | 0.38         | Relation moins linéaire, mais significative d’après le MI-score. |
+| **Saisonnalité**      | 17.66       | 0.40         | Relation non linéaire claire, malgré un faible F-Score. |
+| **Aridité**           | 0.09        | 0.37         | Jugée insignifiante par le F-test, mais le MI-score révèle une contribution non linéaire. |
 
-###### **1. Régression :**
+Les résultats montrent que certaines variables, comme la **Température**, la **Saisonnalité**, et l'**Aridité**, présentent des **F-Scores faibles** mais des **MI-Scores élevés**, soulignant leur contribution via des **relations non linéaires** avec la variable cible. En revanche, des variables comme le **Taux de fertilité**, la **Population**, et la **Mortalité infantile** sont significatives selon les deux méthodes, indiquant qu’elles influencent la cible à la fois de manière linéaire et non linéaire.  
 
-| **Feature**        | **F-Score** | **MI-Score** | **Interprétation**                                   |
-|--------------------|-------------|-------------|-----------------------------------------------------|
-| **fertility**       | 205.11      | 0.33        | Très significative avec un bon MI-score.             |
-| **pop**             | 148.74      | 0.29        | Forte relation linéaire et non linéaire.             |
-| **capita**          | 147.52      | 0.24        | Significative mais légèrement plus faible en MI.     |
-| **child**           | 142.81      | 0.29        | Indique une corrélation importante et non linéaire.  |
-| **Avg_Temperature** | 106.67      | 0.42        | Relation non linéaire forte : le MI-score est élevé. |
-| **Avg_Precipitation** | 34.36     | 0.38        | Relation moins linéaire, mais significative en MI.   |
-| **Avg_Seasonality** | 17.66       | 0.40        | Relation non linéaire claire malgré un faible F-Score. |
-| **Avg_Aridity**     | 0.09        | 0.37        | Le F-test la juge insignifiante, mais MI montre une contribution. |
+**Classification** 
 
-**Observation :**
-- Les variables comme **Avg_Temperature**, **Avg_Seasonality**, et **Avg_Aridity** ont des **F-Scores faibles** mais des **MI-Scores élevés**, indiquant des **relations non linéaires** avec la variable cible.
-- La variable **fertility** est significative dans les deux méthodes.
+| **Variable**         | **F-Score** | **MI-Score** | **Interprétation**                                   |
+|-----------------------|-------------|--------------|------------------------------------------------------|
+| **Taux de fertilité**         | 80.09       | 0.13         | Très significative en termes de relation linéaire, mais avec un MI-score modéré. |
+| **Mortalité infantile** | 53.49      | 0.13         | Bonne dépendance à la fois linéaire et non linéaire. |
+| **PIB/habitant**               | 52.11       | 0.11         | Significative selon les deux métriques, mais légèrement plus faible en MI. |
+| **Population**        | 42.98       | 0.18         | Contribution plus marquée dans les dépendances non linéaires (MI-score). |
+| **Température**       | 30.66       | 0.18         | Relation essentiellement non linéaire, comme le montre le MI-score. |
+| **Précipitations**    | 9.20        | 0.20         | Faible contribution linéaire, mais forte dépendance globale détectée par MI. |
+| **Saisonnalité**      | 4.21        | 0.19         | Relation principalement non linéaire, comme indiqué par le MI-score. |
+| **Aridité**           | 0.39        | 0.17         | Insignifiante selon le F-score, mais une relation non linéaire est détectée par MI. |
 
-###### **2. Classification :**
+Les résultats montrent que les variables telles que ka **Température**, les **Précipitations**, et la **Saisonnalité** ont des **F-Scores faibles** mais des **MI-Scores élevés**, indiquant qu'elles contribuent principalement par des **relations non linéaires**. En revanche, le **Taux de fertilité** reste un facteur clé, étant significative dans les deux métriques. Cette analyse met en évidence l'importance d'examiner à la fois les relations linéaires et non linéaires pour les tâches de classification.  
 
-| **Feature**        | **F-Score** | **MI-Score** | **Interprétation**                                   |
-|--------------------|-------------|-------------|-----------------------------------------------------|
-| **fertility**       | 80.09       | 0.13        | Très significative linéaire, mais MI-score modéré.   |
-| **child**           | 53.49       | 0.13        | Bonne dépendance linéaire et non linéaire.           |
-| **capita**          | 52.11       | 0.11        | Significative dans les deux cas, mais faible en MI.  |
-| **pop**             | 42.98       | 0.18        | Contribution plus forte en MI qu’en F-score.         |
-| **Avg_Temperature** | 30.66       | 0.18        | Relation non linéaire, reflétée dans un MI-score plus élevé. |
-| **Avg_Precipitation** | 9.20      | 0.20        | Peu linéaire (F-score faible) mais forte dépendance globale. |
-| **Avg_Seasonality** | 4.21        | 0.19        | Contribution principalement non linéaire.            |
-| **Avg_Aridity**     | 0.39        | 0.17        | Le F-score est insignifiant, mais MI montre une relation. |
+**Comparaison entre F-Test et Information Mutuelle**  
 
-**Observation :**
-- Les variables comme **Avg_Temperature**, **Avg_Precipitation**, et **Avg_Seasonality** sont clairement **non linéaires** dans leur relation avec la classe des pays perfomants.
-- La variable **fertility** reste une variable-clé dans les deux cas.
+| **Points clés**       | **F-Test** (relations linéaires)        | **MI** (relations linéaires et non linéaires)         |
+|------------------------|------------------------------------------|-------------------------------------------------------|
+| **Variables influentes** | Forte influence de **Taux de fertilité** et **PIB/habitant** | Influence non linéaire des variables climatiques.      |
+| **Faibles contributeurs** | **Aridité** ignorée par le F-test.     | **Aridité** montre une contribution modérée.           |
 
-###### **Comparaison globale F-Test vs Information Mutuelle :**
+Les variables comme la **Température**, la **Saisonnalité**, et l'**Aridité** présentent des dépendances principalement non linéaires, mises en évidence par des MI-Scores élevés malgré des F-Scores faibles. À l’inverse, des variables telles que le **Taux de fertilité**, la **Population**, et le **PIB/habitant** montrent une forte influence sur les relations linéaires, avec des F-Scores significatifs.  
 
-| **Points clés**     | **F-Test**                             | **Information Mutuelle**                    |
-|--------------------|----------------------------------------|---------------------------------------------|
-| **Type de relation**| Détecte uniquement les relations linéaires. | Détecte les relations linéaires et non linéaires. |
-| **Variables influentes** | Forte influence de **fertility**, **capita** | Influence non linéaire des variables climatiques. |
-| **Faibles contributeurs** | **Avg_Aridity** ignorée par le F-test. | **Avg_Aridity** montre une contribution modérée. |
+Le F-Test est efficace pour détecter les relations linéaires, mais peut sous-estimer l’impact de certaines variables clés. L'Information Mutuelle (MI), quant à elle, capture des dépendances plus complexes et permet d’identifier des contributions souvent ignorées par le F-Test, comme pour l'**Aridité**. Ces deux approches permettent une analyse complémentaire des relations entre variables explicatives et variable cible.  
 
-**Conclusion :**
-Les variables comme Avg_Temperature, Avg_Seasonality, et Avg_Aridity présentent des dépendances principalement non linéaires, soulignées par des MI-Scores élevés malgré des F-Scores faibles. À l’inverse, des variables telles que fertility, pop, et capita montrent une forte influence sur les relations linéaires, avec des F-Scores significatifs. Les deux approches de sélection d'attributs sont complémentaires et permettent de mieux comprendre les relations entre les variables explicatives et la variable cible. 
+Il est possible de combiner les résultats pour une sélection d'attributs plus robuste et complète, en particulier pour des tâches de régression et de classification. Dans les résultats obtenus, une différence notable est observée entre les scores des deux tâches : les scores pour la classification sont globalement plus faibles que pour la régression.  
 
-Le F-Test est efficace pour détecter les relations linéaires, mais peut sous-estimer l’impact de certaines variables clés. L'Information Mutuelle (MI), quant à elle, capture des dépendances plus complexes et permet d’identifier des contributions souvent ignorées par le F-Test, comme pour Avg_Aridity.
+**Interprétation avec les Arbres de Décision**  
 
-On peut combiner les deux approches pour une sélection d'attributs plus robuste et complète, en particulier pour des tâches de classification et de régression où les relations peuvent être linéaires ou non linéaires.
+Les résultats obtenus avec le F-Test et l'Information Mutuelle peuvent être corroborés par une analyse des attributs à travers des arbres de décision. Ces modèles supervisés permettent de visualiser et d'interpréter les relations entre les variables explicatives et la variable cible en identifiant les attributs les plus discriminants.  
 
-##### Analyse des Noeuds d'un Arbre de Décision
+Lors de l’entraînement d’arbres de décision pour les tâches de classification et de régression, des différences marquées ont été observées :  
+- **En régression**, les arbres nécessitent des profondeurs plus faibles pour éviter le sur-apprentissage, car les relations entre les attributs et la variable cible sont souvent plus linéaires et directes.  
+- **En classification**, des arbres plus profonds s’avèrent souvent nécessaires pour capturer des relations plus complexes, en raison de scores plus faibles et de dépendances non linéaires dans les données.  
 
-Pour cette partie, nous allons entraîner un arbre de décision sur les données de classification et de régression pour analyser les attributs les plus importants. Les arbres de décision sont des modèles d'apprentissage supervisé qui permettent de visualiser et d'interpréter les relations entre les attributs et la variable cible. En analysant les noeuds de l'arbre, on peut identifier les attributs les plus discriminants pour la tâche en question.
+L’analyse des noeuds des arbres confirme l’importance relative des attributs identifiés par les F-Scores et les MI-Scores. Par exemple, des variables telles que le **Taux de fertilité** et le **PIB/habitant** apparaissent fréquemment dans les noeuds supérieurs (près de la racine) des arbres, indiquant leur rôle clé dans les deux tâches. À l’inverse, des attributs comme la **Température** et la **Saisonnalité**, bien que moins linéaires, sont souvent utilisés dans des noeuds intermédiaires ou terminaux, reflétant leur contribution aux relations non linéaires.  
 
-###### Arbre de Décision pour la Régression :
+En combinant ces observations avec les résultats des tests statistiques, il est possible d’obtenir une vision globale et nuancée des facteurs influençant les performances, tout en renforçant la robustesse des modèles utilisés.  
 
-Comme mentionné précédemment, nous allons corroborer les résultats obtenus avec le F-Test et l'Information Mutuelle en analysant les noeuds d'un arbre de décision pour la régression. L'arbre de décision permet de visualiser les attributs les plus importants pour prédire la variable cible (nombre d'athlète classé dans 10 premiers).
+**Arbre de Décision pour la Régression**  
 
-Après avoir entraîné l'arbre de décision, on a remarqué que la profondeur maximale de l'arbre de 3 permettait d'obtenir les meilleurs résultats (R2 = 0.65). Si on augmente la profondeur, l'arbre risque de sur-apprendre les données et de perdre en généralisation.
+L'analyse des noeuds d'un arbre de décision permet de corroborer les résultats obtenus avec le F-Test et l'Information Mutuelle en identifiant les attributs les plus significatifs pour prédire la variable cible (le score, soit le nombre d'athlètes classés dans les 10 premiers).  
 
-Voici l'arbre de décision obtenu pour la régression :
+Après entraînement, il a été observé qu'une profondeur maximale de **3** offrait les meilleurs résultats, avec un coefficient de détermination (**R²**) de 0.65. Une augmentation de la profondeur de l'arbre entraîne un risque de sur-apprentissage, réduisant ainsi la capacité du modèle à généraliser sur de nouvelles données. Cette profondeur optimale reflète l'importance des attributs et les scores obtenus par le F-Test et l'Information Mutuelle, qui sont globalement meilleurs pour la régression que pour la classification.  
 
-![Arbre de Décision](./figures/feature_selection/arbre-decision-reg.png)
+Avec une profondeur de 3, l'arbre de décision exploite efficacement **4 attributs principaux** et utilise un nombre limité de seuils pour segmenter les données. Cela démontre que les relations entre les variables explicatives et la variable cible dans la tâche de régression sont suffisamment capturées sans nécessiter une complexité excessive, renforçant ainsi la robustesse et la généralisation du modèle.
 
-On peut voir que le taux de fertilité (fertility) est le premier attribut utilisé pour diviser les données, suivi par le popultion (pop), et le Avg_Temperature et le pib par habitant (capita). Ces attributs sont cohérents avec les résultats obtenus par le F-Test et l'Information Mutuelle, qui ont montré que la fertilité et la population étaient des attributs importants pour la régression. L'arbre de décision confirme ces résultats en montrant que la fertilité est le facteur le plus discriminant pour prédire le nombre d'athlètes classés dans les 10 premiers.
+L'arbre de décision obtenu est donné dans la figure ci-dessous :
 
+![Arbre de Décision - Régression](./figures/feature_selection/arbre-decision-reg.png)
 
+L'analyse de l'arbre de décision révèle que le **Taux de fertilité** (Fertility) est le premier attribut utilisé pour diviser les données, suivi de la **Population** (pop), de la **Température** (Avg_Temperature) et du **PIB par habitant** (capita). Ces résultats sont cohérents avec ceux obtenus par le F-Test et l'Information Mutuelle, qui avaient déjà mis en évidence l'importance de la fertilité et de la population pour la régression.  
 
-##### 5.2.3.4 Importance des Attributs avec un Arbre de Décision
+L'arbre de décision confirme que la fertilité est le facteur le plus discriminant pour prédire les performances olympiques. Ces **quatre attributs** suffisent à obtenir des prédictions fiables, avec un coefficient de détermination (**R²**) de 0.65, démontrant l'efficacité de ce modèle dans cette tâche.  
 
+### Arbre de Décision pour la Classification
+
+Pour la classification, un arbre de décision a été entraîné afin de prédire la classe des pays en fonction de leurs performances olympiques. La profondeur de l'arbre a été ajustée pour maximiser les performances, atteignant un **F1-score d’environ 95 %**. La profondeur optimale identifiée est de **11**, ce qui permet de capturer efficacement les relations entre les attributs et les classes des pays.  
+
+![Arbre de Décision - Classification](./figures/feature_selection/arbre-decisio-clas.png)  
+
+L'analyse de l'arbre révèle que le **Taux de fertilité** (Fertility) est le premier attribut utilisé pour diviser les données, suivie par la **Population** (Pop), la **mortalité infantile** (Child), la **température** (Avg_Temperature), le **PIB par habitant** (Capita), et les **Précipitations** (Avg_Precipitation).  
+
+Ce qui est particulièrement notable, c'est que la profondeur optimale de l’arbre, fixée à **11**, reflète l’importance des scores obtenus par le F-Test et l’Information Mutuelle. Ces scores, plus faibles pour la classification que pour la régression, influencent directement la capacité des attributs à discriminer les classes des pays. Contrairement à la régression, où une profondeur de 3 suffisait pour capturer les relations linéaires et non linéaires, une profondeur plus importante est nécessaire ici pour saisir les relations complexes entre les attributs et les classes cibles.  
 
 ### 5.3 Méthodes Non Supervisées
 
+Nous avons recours à différentes techniques de réduction de dimensionnalité pour visualiser les données et détecter d'éventuelles structures sous-jacentes. Ces méthodes permettent de projeter les données dans un espace de dimension réduite tout en conservant autant que possible les relations entre les observations. Parmi ces techniques, nous utilisons l'**UMAP**, le **t-SNE**, le **PCA**, la **Random Projection**, le **MDS**, l'**Isomap** et les **cartes auto-organisatrices (SOM)** pour explorer les données et identifier d'éventuels clusters.
+
 #### 5.3.1 UMAP
+
+L'UMAP (*Uniform Manifold Approximation and Projection*) est une méthode de réduction de dimensionnalité non linéaire particulièrement adaptée à la visualisation de données complexes dans un espace réduit. Elle est souvent utilisée pour explorer des données à haute dimension et mettre en évidence des structures non linéaires. Dans ce projet, l'UMAP est appliqué pour visualiser les performances des pays aux Jeux Olympiques en fonction de leurs attributs socio-économiques et climatiques.  
+
+![UMAP](figures/APN/umap/umap.png)  
+
+La figure ci-dessus montre qu'il est difficile de segmenter visuellement les classes en utilisant la méthode UMAP, que ce soit en deux dimensions ou en trois dimensions (non présentée ici). Afin de confirmer ces observations, des méthodes de classification telles que **k-means** et **DBSCAN** ont été appliquées sur la projection 2D obtenue avec UMAP. Cependant, aucune structure cohérente ou cluster significatif n'a émergé de ces analyses (résultats non montrés).
 
 #### 5.3.2 t-SNE
 
+**t-SNE** (*t-distributed Stochastic Neighbor Embedding*) est une méthode de réduction de dimensionnalité non linéaire souvent utilisée pour visualiser des données complexes dans un espace de dimension réduite. Cette technique est particulièrement efficace pour détecter des structures sous-jacentes dans des ensembles de données à haute dimension. Dans ce projet, t-SNE est appliqué pour représenter les performances des pays aux JO en fonction de leurs attributs socio-économiques et climatiques.
+
+![t-SNE 1992](figures/APN/t-sne/tsne1992.png)
+
+La figure ci-dessus illustre une visualisation typique obtenue avec t-SNE pour une année donnée. Bien qu'aucun groupement net ne soit clairement visible, une légère tendance est observable : les scores semblent diminuer à mesure que l'on s'éloigne du point jaune (à gauche), représentant les États-Unis. Cette tendance pourrait refléter l'influence dominante des États-Unis dans les performances olympiques, mais elle reste insuffisante pour identifier des clusters distincts ou des relations claires entre les pays.  
+
 #### 5.3.3 PCA
 
-#### 5.3.4 Isomap
+La **PCA** (*Principal Component Analysis*) est une méthode linéaire de réduction de dimensionnalité. Elle est souvent utilisée pour simplifier des ensembles de données complexes tout en préservant autant que possible leur variance. En classification, la PCA peut aider à visualiser les données dans un espace à faible dimension et à identifier d'éventuels regroupements ou séparations entre classes.  
 
-#### 5.3.5 Carte auto-organisatrices (SOM)
+![PCA 1992](figures/APN/pca/pca1992.png)  
 
-Pour cette itération nous avons décidé d'utiliser un réseau de neurones SOM pour effectuer un clustering des pays. Nous avons décidé de fixer le nombre de clusters à 5. Les données d'entrée sont le dataset avec les 3 classes selon les seuils précédents.  
+La figure ci-dessus montre une visualisation des données à l'aide de la PCA pour une année donnée. Comme avec les méthodes non linéaires précédemment explorées (t-SNE et UMAP), aucun regroupement clair ou segmentation visuelle des classes n'est observable. Les points se répartissent de manière diffuse dans l'espace réduit, ce qui limite l'utilité de la PCA pour la classification.  
 
-![img](figures/nsup/iter_5_som.png)
+#### 5.3.4 Random Projection  
+
+La **Random Projection** est une méthode de réduction de dimensionnalité qui repose sur la projection aléatoire des données dans un espace de dimension inférieure. Cette approche, bien que moins précise que la PCA ou d'autres techniques avancées, est rapide et efficace pour traiter de grandes bases de données. Elle est souvent utilisée en tant qu'étape exploratoire ou pour accélérer des algorithmes nécessitant une réduction dimensionnelle préalable.
+
+![Random Projection](figures/APN/rp/random-projection.png)  
+
+La figure ci-dessus illustre la visualisation des données après application de la Random Projection. Comme avec les méthodes précédentes (PCA, t-SNE et UMAP), aucune structure claire ou segmentation visuelle des classes n'est identifiable. Cette observation confirme que cette technique, bien qu'utilitaire dans certains contextes, ne permet pas ici de différencier les performances des pays aux Jeux Olympiques sur la base des attributs choisis.  
+
+#### 5.3.5 MDS  
+
+Le **Multidimensional Scaling (MDS)** est une technique de réduction de dimensionnalité qui cherche à représenter les données dans un espace à faible dimension tout en préservant au maximum les distances entre les points. Cette méthode est particulièrement utile pour analyser les relations géométriques ou les similarités entre observations, en mettant en avant des structures potentielles dans les données.  
+
+![MDS](figures/APN/mds/mds.png)  
+
+Malgré l'application de MDS, la visualisation obtenue ne révèle pas de regroupements ou de séparations nettes entre les différentes classes. Cela reflète une tendance similaire observée avec les autres techniques de réduction de dimensionnalité.
+
+#### 5.3.6 Isomap  
+
+**Isomap** est une méthode de réduction de dimensionnalité non linéaire qui généralise le MDS en conservant les distances géodésiques entre les points plutôt que les distances euclidiennes. Cette approche est particulièrement adaptée pour capturer des structures en forme de manifolds dans les données, ce qui en fait un outil puissant pour visualiser des relations complexes dans un espace réduit.  
+
+![Isomap](figures/APN/isomap/isomap.png)  
+
+Cependant, même avec Isomap, aucune segmentation claire des classes ne se démarque dans la projection obtenue. Les données semblent se disperser de manière presque diffuse, sans former de groupes assez distincts et cohérents. Cette absence de structure exploitable visuellement souligne à nouveau la complexité des interactions entre les variables utilisées et la difficulté d’extraire des schémas simples pour discriminer les performances des pays aux JO.
+
+#### 5.3.7 Cartes auto-organisatrices (SOM)
+
+Les **cartes auto-organisatrices (Self-Organizing Maps, SOM)** sont une méthode de clustering non supervisée qui utilise des réseaux de neurones pour projeter des données complexes dans une grille bidimensionnelle. Cette approche permet de regrouper les données similaires tout en conservant la structure topologique des relations entre les observations. Pour cette étude, nous avons fixé le nombre de clusters à 5 afin d'analyser les performances des pays aux JO en fonction de leurs caractéristiques socio-économiques et climatiques.
+
+![Cartes auto-organisatrices (SOM)](figures/nsup/iter_5_som.png)
 
 ```python
 Cluster to Country and Class Mapping:
@@ -446,105 +506,251 @@ Cluster (4, 4): 2 countries -> ['Nigeria', 'Benin']
 Class distribution in Cluster (4, 4): {0: 1}
 ```
 
-Après plusieurs essais nous avons pu obtenir une carte de 5x5 clusters avec un entrainement de 1000 itérations. Le clustering nous parait pas parfait néanmoins nous pouvons remarquer que la plupart des pays de classe 0 se retrouvent bien ensemble ainsi que les pays de classe 1. En ce qui concerne les pays de classe 2 ceux-ci sont dans le neurone de sortie # (0,0) et (0,2). Ceci est pertinent car ces pays sont ceux qui ont les meilleures performances. Ils bien séparés des autres pays. Nous remarquons également que nous trouvons des pays de memes régions géographique souvent dans le même cluster.
+Le clustering obtenu met en évidence des tendances à relever. La majorité des pays de classe **0** (mauvais scores aux JO) se retrouvent regroupés dans des clusters spécifiques, et les pays de classe **1** (scores moyens aux JO) sont également bien séparés dans d'autres zones. Les pays de classe **2**, représentant les meilleures performances, se concentrent principalement dans les clusters **(0,0)** et **(0,2)**, ce qui reflète une séparation claire par rapport aux autres groupes.
 
-### 5.2 Méthodes Supervisées
+De plus, on observe que des pays issus des mêmes régions géographiques ou partageant des similitudes socio-économiques apparaissent souvent dans les mêmes clusters. Cela montre que, contrairement aux méthodes PCA, t-SNE et UMAP, Random Projection, MDS, et Isomap, une carte auto-organisatrice (SOM) réussit à capturer certains motifs sous-jacents, bien que des améliorations soient possibles pour affiner davantage la séparation des classes.
 
-#### 5.2.1 Arbre de Décision pour la classification
+### 5.4 Méthodes Supervisées
 
-#### 5.2.2 Forêts Aléatoires
+#### 5.4.1 Arbre de Décision, Forêt Aléatoire, et XGBoost
 
-##### 5.2.2.1 Classification
+**Régression**
 
-##### 5.2.2.2 Régression
+Les expériences réalisées avec les arbres de décision (**DT**), les forêts aléatoires (**RF**) et XGBoost (**XGB**) pour la régression mettent en lumière la supériorité des modèles ensemblistes (forêts aléatoires et XGBoost) pour prédire les performances olympiques des pays. Les résultats obtenus sont résumés dans le tableau ci-dessous :
 
-#### 5.2.3 XGBoost
+| Modèle            | Année | RMSE    |
+|-------------------|-------|---------|
+| Random Forest     | 2020  | 15.4857 |
+| XGBoost           | 2020  | 15.3882 |
+| Decision Tree     | 2020  | 21.1926 |
 
-##### 5.2.3.1 Classification
+XGBoost s'impose comme le modèle le plus performant, avec une **RMSE de 15.3882**, suivi de près par les forêts aléatoires, qui obtiennent une **RMSE de 15.4857**. Les arbres de décision simples affichent des performances nettement inférieures, avec une **RMSE de 21.1926**.
 
-##### 5.2.3.2 Régression
+Ces résultats soulignent l'efficacité des modèles ensemblistes, tels que les forêts aléatoires et XGBoost, dans la capture de relations complexes entre les attributs et la variable cible. Leur capacité à combiner les prédictions de multiples arbres de décision permet d'améliorer considérablement la précision des prédictions. En revanche, les arbres de décision simples, bien qu'interprétables, sont souvent limités lorsqu'il s'agit de modéliser des relations non linéaires ou de gérer des interactions complexes entre les variables. Ces caractéristiques font des modèles ensemblistes des outils incontournables pour des tâches de régression dans des contextes complexes comme celui des performances olympiques.
 
-#### 5.2.4 Réseaux de Neurones
+| Modèle            | R²       |
+|-------------------|----------|
+| Random Forest     | 0.8136   |
+| XGBoost           | 0.8159   |
+| Decision Tree     | 0.6509   |
 
-##### 5.2.4.1 Baseline pour la Régression
-Le premier modèle développé dans le cadre du projet était une régression linéaire simple appliquée sur le dataset de 1992, visant à établir une relation linéaire entre les variables socio-économiques et les performances olympiques. Les métriques de performance utilisées étaient le RMSE (Root Mean Squared Error) et l'optimiseur adam ainsi que le r^2 de Pearson pour l'évaluation.
-![img](figures/sup/iter_1_model.png)
-![img](figures/sup/iter_1_mes.png)
-![img](figures/sup/iter_1_regression.png)
-Notre premier modèle sert de baseline pour la suite de notre projet. Il nous permet de voir les améliorations que nous pouvons apporter. Un R^2 de 0.58 est relativement médiocre en revanche nous pouvons voir que le mlp est capable d'apprendre des caractéristiques d'après la courbe d'apprentissage.
+En termes de **R²** (voir tableau ci-dessus), les résultats confirment la tendance observée avec le **RMSE** : les forêts aléatoires et XGBoost surpassent nettement les arbres de décision simples. Les scores respectifs de **0.8136** pour les forêts aléatoires et **0.8159** pour XGBoost indiquent leur aptitude à expliquer une proportion importante de la variance des performances olympiques des pays. En revanche, les arbres de décision affichent un score de **0.6509**, soulignant une capacité inférieure à modéliser ces relations complexes.
 
-#### 5.2.2 Itération 2 : Modèle de Régression Linéaire avec dataset complet
-Dans cette deuxième itération, nous avons décidé d'ajouter des variables explicatives supplémentaires pour améliorer la performance de notre modèle. Les métriques de performance utilisées étaient le RMSE et le R^2 de Pearson pour l'évaluation.
-![img](figures/sup/iter_2_model.png)
-![img](figures/sup/iter_2_mse.png)
-![img](figures/sup/iter_2_regression.png)
-Nous constatons qu'en ajoutant plus de variables explicatives, notre modèle a une meilleure performance. En effet, le R^2 de Pearson passe de 0.58 à 0.87. Cela signifie que 87% de la variance de notre variable cible est expliquée par nos variables explicatives. Cependant nous pouvons voir que dans le coin gauche du bas nous avons un grand nombre de pays qui ne sont pas forcément bien traité par notre modèle.
+Ces résultats mettent en évidence la puissance des modèles ensemblistes dans des tâches de régression. Leur capacité à combiner plusieurs arbres de décision leur permet de capturer des relations subtiles et des interactions entre les variables, ce qui est crucial dans un domaine aussi complexe que les performances olympiques. Toutefois, il convient de noter que même les arbres de décision simples obtiennent un score R² relativement élevé, suggérant que tous les modèles testés réussissent à expliquer une part significative de la variance observée, bien que les modèles ensemblistes soient clairement les plus performants.
 
-### 5.2.3 Itération 3 : Modèle de Régression Linéaire avec deux branches
+| Country     | Year | Score  | RF Predictions | XGB Predictions | DT Predictions  |
+|-------------|------|--------|----------------|-----------------|-----------------|
+| Albania     | 2020 | 2.0    | 4.715          | 5.122979        | 10.884817       |
+| Algeria     | 2020 | 9.0    | 10.420         | 10.708930       | 7.038462        |
+| Angola      | 2020 | 1.0    | 3.345          | 5.240013        | 7.038462        |
+| Argentina   | 2020 | 17.0   | 48.760         | 44.890705       | 72.293103       |
+| Armenia     | 2020 | 9.0    | 14.635         | 21.269703       | 1.541985        |
+| ...         | ...  | ...    | ...            | ...             | ...             |
+| Uzbekistan  | 2020 | 29.0   | 13.845         | 16.552280       | 7.038462        |
+| Venezuela   | 2020 | 7.0    | 8.745          | 11.998327       | 7.038462        |
+| Vietnam     | 2020 | 2.0    | 6.265          | 5.529913        | 7.038462        |
+| Zambia      | 2020 | 4.0    | 0.755          | 0.992839        | 1.541985        |
+| Zimbabwe    | 2020 | 0.0    | 1.560          | 1.709837        | 1.541985        |
 
-Dans cette itération nous avons décidé de construire un modèle de prédiction plus complexe. Une branche pour effectuer une classification selon la performance du pays et une autre qui se chargera de la régression. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle.
+Voici un extrait des **prédictions pour les pays lors de l'édition 2020**. On observe que les prédictions issues des forêts aléatoires (**RF**) et de XGBoost (**XGB**) sont généralement plus proches des valeurs réelles que celles des arbres de décision simples (**DT**). 
 
-Nous commencerons par traiter 2 classes pour la branche concernée.
+Les forêts aléatoires et XGBoost se distinguent par leur capacité à produire des prédictions plus précises, en se rapprochant davantage des scores réels. À l'inverse, les arbres de décision simples affichent des écarts plus importants, indiquant une moindre précision. Ces observations corroborent les performances générales des modèles ensemblistes, confirmées par les métriques présentées précédemment. Les modèles ensemblistes offrent donc une meilleure capacité à modéliser les performances olympiques des pays.
 
-![img](figures/sup/iter_3_model.png)
-![img](figures/sup/iter_3_loss.png)
-![img](figures/sup/iter_3_mse.png)
-![img](figures/sup/iter_3_acc.png)
-![img](figures/sup/iter_3_conf.png)
-![img](figures/sup/iter_3_reg.png)
-Nous pouvons voir en premier lieu que notre modèle est capable de classifier les pays en 2 classes selon la performance du pays nous avons fixé le seuil à 0.3. Après normalisation des valeurs des performance des délégations si le pays à une performance < 0.3 alors il est marqué comme un pays de classe 0 sinon 1. A noter que les données des performances correspondent aux nombres d'athlètes faisant partie du top 10 pour les disciplines retenues pour chaque éditions. 
+**Prédictions Forêt Aléatoire :**
 
-Nous pouvons en premier lieu de constater que le modèle est capable de classifier les pays selon les classes qui leur ont été assignées. En effet, l'accuracy semble bien augmenter au fil de l'entrainement. Nous obtenons un score f1 de 0.9085 et une accuracy de 0.93. La matrice de confusion nous permet de confirmer ces résultats relativement bons.
+![Prédictions Random Forest](figures/APV/Regression/predictions2020RF.png)
 
-Concernant la régression nous ne pouvons pas en dire autant. Il semble que le réseau est capable de diminuer son loss selon l'entrainement mais la MSE ne semble pas diminuer. Nous observons plutot une courbe erratique. 
-A noter que nous avons du considérablement augmenter le nombre de neurones pour la branche de la régression. Dans le cas contraire le modèle semblait être perturbé par la backpropagation de la classification.
+Ce graphique compare les scores réels des Jeux Olympiques de 2020 avec les prédictions du modèle Random Forest. L'axe des abscisses montre les pays et l'axe des ordonnées, les scores. Les courbes bleues représentent les valeurs réelles, tandis que les courbes orange montrent les prédictions. Globalement, le modèle Random Forest suit de près les tendances des données réelles, avec une précision notable, même pour certains scores élevés. Cependant, on observe toujours quelques écarts pour des valeurs extrêmes, bien que le modèle semble mieux aligné sur ces pics par rapport au modèle XGBoost.
 
-### 5.2.4 itération 4 : Modèle de Régression Linéaire avec deux branches et 3 classes
-Dans cette itération nous proposons de passer à 3 classes pour la classification. Nous avons décidé de classer les pays en 3 classes selon leur performance. Les métriques restent les mêmes que pour les itérations précédentes. Nous attendons un granularité plus fine de ce modèle. Les seuils sont fixés à 0.2 et 0.8 pour la définition des classes de pays.
+En comparaison avec le graphique du modèle XGBoost, Random Forest offre des prédictions souvent plus proches des scores réels, notamment pour des pays ayant des performances moyennes ou élevées. Contrairement à XGBoost, qui avait tendance à lisser les valeurs les plus élevées, Random Forest capture davantage les variations importantes sans trop aplanir les résultats. Cependant, pour des pays aux scores très bas, les deux modèles montrent des performances similaires. Cela suggère que Random Forest pourrait être plus efficace pour gérer des données complexes ou hétérogènes, mais reste limité, comme XGBoost, pour les cas de scores particulièrement extrêmes.
 
-![img](figures/sup/iter_4_model.png)
-![img](figures/sup/iter_4_loss_reg.png)
-![img](figures/sup/iter_4_loss_cl.png)
-![img](figures/sup/iter_4_mse.png)
-![img](figures/sup/iter_4_acc.png)
-![img](figures/sup/iter_4_conf.png)
-![img](figures/sup/iter_4_reg.png)
+**Prédictions XGBoost :**
 
-Nous observons un loss, autant sur la sortie de la régression que sur la classification qui démontre une bonne stabilité semblant capturer correctement des caractéristiques. La MSE de la régression cette fois est stable pour tous les folds et semble démonter un apprentissage également. Concernant l'accuracy nous obtenons une courbe plus cohérente dans le sens que les oscillations restent stables et semblent converger vers une meilleur résultat ~0.87. Nous obtenons un F1 de 0.90 pour la classification en 3 classes.
+![Prédictions XGBoost](figures/APV/Regression/predictions2020XGBoost.png)
 
-L'analyse du R^2 est plutôt satisfaisant nous arrivons avec un coefficient de Pearson de 0.77 alors que le modèle en 2 classes était négatif. Nous n'atteignons pas le 0.87 du modèle de l'itération 2 mais nous sommes capable de classifier les pays avec le modèle actuel. La classification influence certainement la performance de la régression c'est probablement pourquoi nous ne sommes pas aussi bon que le modèle de l'itération 2. 
+Ce graphique compare les scores réels des Jeux Olympiques de 2020 avec les prédictions du modèle XGBoost. L’axe des abscisses montre les pays, et l’axe des ordonnées, les scores. Les courbes bleues représentent les valeurs réelles et les vertes, les prédictions. Globalement, le modèle suit bien la tendance des données réelles, même si des écarts apparaissent, surtout pour les scores très élevés. Cela montre que le modèle capte les grandes tendances mais peut sous-estimer ou surestimer certains cas atypiques.
 
-A noter qu'en comparaison avec l'itération précédente, nous avons environ 4000 paramètres avec le modèle actuel. Le modèle précédent demandait l'ajout de multiples couches pour la régression ce qui nous conduisait à avoir environ 68300 paramètres. La passage avec un nombre de classes plus granuleux permet certainement au modèle de mieux comprendre le comportement des performance et d'adapter son échelle de prédiction.
+On observe des différences plus importantes pour certains pays, ce qui pourrait indiquer des limites dans la capacité du modèle à bien généraliser sur des données très variées. Par exemple, pour les scores très élevés, les courbes réelles dépassent souvent les prédictions. Cela peut venir d'un manque de données explicatives précises ou d’un biais du modèle qui lisse les valeurs extrêmes. En revanche, pour la plupart des pays avec des scores plus modérés, les prédictions restent cohérentes, illustrant une performance globale satisfaisante du modèle.
 
----
-## 6. Résultats et Analyse
-### 6.1 Performances des Modèles
-- Présentation des métriques comme F1-score, précision, et RMSE.
-- Comparaison des performances entre approches supervisées et non supervisées.
+**Prédictions Forêt Aléatoire**
 
-### 6.2 Insights Clés
-- Identification des facteurs clés influençant les performances olympiques.
-- Analyse des clusters régionaux et des tendances générales.
+![Prédictions Random Forest](figures/APV/Regression/predictions2020RF.png)
 
+Ce graphique illustre la comparaison entre les scores réels des Jeux Olympiques de 2020 et les prédictions du modèle **Random Forest**. L'axe des abscisses représente les pays, tandis que l'axe des ordonnées indique les scores. Les courbes bleues correspondent aux valeurs réelles, et les courbes orange aux prédictions du modèle.
 
+Dans l'ensemble, **Random Forest suit fidèlement les tendances des scores réels**, montrant une forte précision, même pour certains scores élevés. Toutefois, des écarts subsistent pour quelques valeurs extrêmes, bien que ce modèle semble mieux aligné sur ces pics en comparaison avec XGBoost.
 
+En observant ces résultats par rapport à ceux de **XGBoost**, Random Forest se distingue par des prédictions souvent plus proches des scores réels, en particulier pour les pays ayant des performances moyennes ou élevées. Contrairement à XGBoost, qui tend à lisser les scores les plus élevés, Random Forest capture davantage les variations importantes sans aplanir excessivement les résultats. Cependant, pour les pays avec des scores très bas, les deux modèles affichent des performances similaires. Ces observations suggèrent que **Random Forest est potentiellement mieux adapté aux données complexes ou hétérogènes**, bien qu’il partage avec XGBoost des limites pour les cas de scores extrêmes.
 
-## 8. Discussion et améliorations
-### 8.1 Forces et Faiblesses
-- Points forts du projet 
-- Limites rencontrées
+**Classification**
 
-### 8.2 Améliorations
-- Intégration de nouvelles variables.
-- Exploration d’approches de modélisation plus avancées.
+Pour aborder la **classification** des performances olympiques, nous avons entraîné trois modèles : 
+- **Forêt Aléatoire (RF)**
+- **XGBoost (XGB)**
+- **Arbre de Décision (DT)**
 
+L’objectif consiste à prédire la **classe de score** d’un pays en fonction de sa performance aux Jeux Olympiques. Nous avons défini trois classes (0, 1 et 2) en nous basant sur une **normalisation** des scores :
+
+- **Classe 0** : Score < 0.3
+- **Classe 1** : 0.3 ≤ Score < 0.6
+- **Classe 2** : 0.6 ≤ Score < 0.9
+
+Ces bornes ont été déterminées pour refléter l’éventail de performances : de la moins bonne (classe 0) à la meilleure (classe 2). Elles permettent de discrétiser les scores continus en trois catégories distinctes, facilitant ainsi l’évaluation comparative des pays.
+
+Après avoir entraîné et évalué les trois modèles, les **résultats** obtenus montrent :
+
+1. Une bonne capacité de séparation des classes pour la Forêt Aléatoire et XGBoost, qui affichent généralement des **taux de bonne classification** plus élevés, notamment pour les pays présentant des performances moyennes ou élevées.
+2. Des prédictions plus variables pour l’Arbre de Décision, qui, malgré son **interprétabilité**, semble moins robuste pour saisir les nuances entre les trois classes.
+
+La comparaison de ces modèles révèle ainsi l’importance des approches ensemblistes (Forêt Aléatoire et XGBoost) pour capturer les **relations complexes** entre les attributs et les performances olympiques. En revanche, l’Arbre de Décision, bien qu’utile pour sa **simplicité** et sa **transparence**, se montre moins performant lorsqu’il s’agit de **généraliser** sur des données hétérogènes ou extrêmes.
+
+**Matrice de confusion de Forêt Aléatoire**
+
+![Matrice de confusion de Forêt Aléatoire](figures/APV/Classification_MC/RF.png)
+
+La **matrice de confusion** ci-dessus illustre la performance du **Random Forest** pour la classification des scores des pays aux Jeux Olympiques. Les lignes représentent les classes réelles, et les colonnes indiquent les prédictions du modèle. 
+
+- **Classe 0** : 126 instances correctement classées sur 127, soit une erreur minime (1 observation mal classée en classe 1).
+- **Classe 1** : 13 prédictions exactes, avec 2 erreurs attribuées à la classe 0.
+- **Classe 2** : 1 instance correctement classée, sans aucune erreur de classification.
+
+On constate que le **Random Forest** fait peu d’erreurs, notamment sur la **classe majoritaire (0)**, et qu’il parvient à bien distinguer la **classe 2**, malgré un faible nombre d’exemples dans cette catégorie. Cette bonne séparation souligne la **robustesse** du modèle pour gérer des distributions de données déséquilibrées et des classes moins fréquentes.
+
+**Matrice de confusion de XGBoost**
+
+![Matrice de confusion de XGBoost](figures/APV/Classification_MC/XGBoost.png)
+
+La matrice de confusion de **XGBoost** met également en évidence une **excellente classification** de la classe 0, avec 126 observations correctement prédites. Toutefois, on note quelques erreurs supplémentaires pour la classe 1, comparativement au **Random Forest** :
+
+- **Classe 0** : 126 instances correctement prédites, 1 erreur vers la classe 1.
+- **Classe 1** : 12 prédictions exactes, 3 erreurs vers la classe 0.
+- **Classe 2** : 1 instance correctement identifiée.
+
+Aucune instance de la classe 2 n’a été mal classée, montrant une **bonne séparation** pour cette classe. Les erreurs plus fréquentes entre les classes 0 et 1 indiquent que **XGBoost** peut être légèrement plus sensible aux **données déséquilibrées** ou à la **frontière** entre ces deux classes. Malgré tout, ses performances globales restent **très proches** de celles de la Forêt Aléatoire.
+
+**Matrice de confusion de l’Arbre de Décision**
+
+![Matrice de confusion de l'Arbre de décision](figures/APV/Classification_MC/Arbre_Decision.png)
+
+La matrice de confusion de l’**Arbre de Décision** révèle davantage d’erreurs, surtout pour les classes moins représentées :
+
+- **Classe 0** : 125 observations correctement prédites, 2 erreurs vers la classe 1.
+- **Classe 1** : 10 prédictions exactes, 4 erreurs vers la classe 0 et 1 vers la classe 2.
+- **Classe 2** : 1 instance correctement classée.
+
+Par rapport aux modèles **Random Forest** et **XGBoost**, l’Arbre de Décision montre une plus grande difficulté à différencier la **classe 1** de la **classe 0**, ce qui se traduit par des **erreurs de classification** plus nombreuses. Cette limitation provient notamment de sa **structure simple** (un seul arbre), qui a tendance à moins bien **généraliser** sur des ensembles de données complexes ou déséquilibrés.
+
+**Scores de précision, rappel et F1**
+
+| Modèle                     | Précision | Rappel   | F1-Score  |
+|---------------------------|-----------|----------|-----------|
+| Random Forest Classifier  | 0.978631  | 0.979021 | 0.978700  |
+| XGBoost Classifier        | 0.971277  | 0.972028 | 0.971138  |
+| Decision Tree Classifier  | 0.951483  | 0.951049 | 0.949659  |
+
+Ce tableau résume les **performances** des trois modèles, en termes de **précision**, de **rappel** et de **F1-score**. La **Forêt Aléatoire** arrive en tête, affichant un **excellent équilibre** entre la capacité à bien prédire les classes positives et à minimiser les **fausses classifications**. XGBoost suit de près, avec seulement quelques erreurs supplémentaires, principalement pour la **classe 1**. Enfin, l’Arbre de Décision présente un **F1-score** plus faible, conséquence directe des erreurs plus nombreuses observées dans la **matrice de confusion**. En définitive, ces résultats démontrent la **robustesse** des modèles ensemblistes (Random Forest et XGBoost) face à la **variabilité** des données et à la **taille réduite** de certaines classes.
+
+#### 5.4.2 Réseaux de Neurones
+
+**Baseline pour la Régression**
+
+Pour établir une baseline permettant d’évaluer les améliorations futures, un premier modèle de réseau de neurones est développé avec tous les attributs socio-économiques mais sans les attributs climatiques. Ce modèle vise à prédire les performances olympiques à partir de variables socio-économiques. Les métriques utilisées pour mesurer les performances incluent le **RMSE (Root Mean Squared Error)**, le **coefficient de corrélation de Pearson (R²)**, et l’optimiseur **Adam**.
+
+![Courbe d'apprentissage](figures/sup/iter_1_model.png)
+
+La courbe d'apprentissage montre que le modèle parvient à apprendre des caractéristiques des données, indiquant une certaine capacité à capturer des relations pertinentes. Cependant, les performances globales restent limitées.
+
+![Métriques d'évaluation](figures/sup/iter_1_mes.png)
+
+Avec un **R² de 0.58**, le modèle explique une part modérée de la variance des performances olympiques. Ce score reflète une performance médiocre, mais suffisante pour servir de baseline.
+
+![Visualisation des prédictions](figures/sup/iter_1_regression.png)
+
+La visualisation des prédictions met en évidence les limites de ce premier modèle. Bien que des tendances globales soient discernables, des écarts significatifs persistent pour certaines observations. Cela illustre l'insuffisance de ce modèle pour capturer la complexité des données.
+
+**Amélioration de la Baseline**
+
+Dans ce deuxième modèle, les attributs climatiques sont intégrés afin d'améliorer la baseline. Les métriques utilisées pour évaluer le modèle sont la RMSE (Root Mean Squared Error) et le coefficient de détermination \( R^2 \) de Pearson.
+
+![Architecture du modèle](figures/sup/iter_2_model.png)  
+L'ajout de ces nouvelles variables explicatives enrichit la capacité du modèle à capturer la complexité des données, en exploitant des facteurs potentiellement influents sur les performances observées.
+
+![Courbe de MSE](figures/sup/iter_2_mse.png)  
+L'analyse des courbes de MSE montre une amélioration notable en termes de stabilité et de convergence. Cette évolution est indicatrice d'un apprentissage plus efficace du modèle après l'ajout des nouvelles variables.
+
+![Régression](figures/sup/iter_2_regression.png)  
+Le coefficient de détermination \( R^2 \) passe de 0.58 à 0.87, indiquant que 87 % de la variance de la variable cible est désormais expliquée par les variables explicatives. Cette progression souligne l'impact positif de l'intégration des attributs climatiques. Toutefois, une observation plus détaillée met en évidence des limitations. Un grand nombre de pays, représentés dans le coin inférieur gauche, ne sont pas correctement prédits par le modèle. Ces écarts suggèrent que, malgré les améliorations, certaines régions ou groupes de données spécifiques nécessitent des ajustements supplémentaires pour être mieux représentés.
+
+**Modèle de Régression à Deux Branches**
+
+Pour améliorer la granularité des prédictions, nous avons développé un modèle plus complexe à deux branches. Ce modèle comporte une branche dédiée à la classification des pays selon leurs performances, et une autre branche dédiée à la régression. Les métriques utilisées restent identiques à celles de la section précédente. Nous avons débuté l’évaluation avec 2 classes pour la branche de classification.
+
+![Architecture du modèle](figures/sup/iter_3_model.png)  
+L'architecture comprend deux sous-réseaux : un pour classifier les pays en fonction de leur performance et un autre pour prédire les performances via une régression. La classification repose sur un seuil fixé à 0.3 après normalisation des performances : un pays avec une performance inférieure à 0.3 est assigné à la classe 0, sinon à la classe 1.
+
+![Courbes de perte pour la classification](figures/sup/iter_3_loss.png)  
+La courbe de perte pour la classification montre une diminution régulière au fil des itérations, indiquant que le modèle apprend à séparer efficacement les classes.
+
+![Courbe d'accuracy](figures/sup/iter_3_acc.png)  
+L'accuracy augmente de manière cohérente avec l'entraînement, atteignant une valeur finale de 0.93. Cette performance est confirmée par le score F1, qui atteint 0.91. La matrice de confusion ci-dessous illustre la capacité du modèle à classifier correctement les pays dans les deux classes définies. Les résultats confirment une bonne généralisation de la branche de classification.
+
+![Matrice de confusion](figures/sup/iter_3_conf.png)  
+Concernant la branche de régression, les résultats sont moins concluants. La perte (loss) diminue progressivement, ce qui montre que le modèle apprend, mais la courbe de la MSE (Mean Squared Error) est erratique et ne converge pas clairement.
+
+![Courbe de MSE](figures/sup/iter_3_mse.png)  
+Malgré les ajustements, notamment une augmentation significative du nombre de neurones dans la branche de régression, le modèle semble être perturbé par la rétropropagation de la classification. Cette interaction entre les deux branches complique l'apprentissage efficace de la régression.
+
+![Courbe de perte pour la régression](figures/sup/iter_3_reg.png)  
+Le modèle à deux branches montre une bonne performance pour la classification des pays selon leurs performances, avec des métriques élevées. Cependant, des améliorations architecturales sont nécessaires pour réduire l'interférence entre les deux branches et améliorer la précision des prédictions continues.
+
+**Modèle de Régression à Deux Branches et Trois Classes**
+Dans cette dernière étape, le modèle de régression et de classification passe à trois classes pour la branche de classification. Les pays sont classés en trois catégories selon leur performance, avec des seuils fixés à 0.2 et 0.8. Les métriques utilisées restent identiques à celles des itérations précédentes, mais une granularité plus fine est attendue grâce à cette nouvelle structure.
+
+![Architecture du modèle](figures/sup/iter_4_model.png)  
+L'architecture du modèle est ajustée pour intégrer cette classification à trois classes tout en maintenant la branche de régression. Cela permet une meilleure différenciation des pays selon leurs performances.
+
+![Courbe de perte pour la régression](figures/sup/iter_4_loss_reg.png)  
+La courbe de perte pour la régression montre une stabilité significative, indiquant que le modèle apprend à capturer efficacement les caractéristiques des données. Ce comportement est également observé pour la branche de classification.
+
+![Courbe de perte pour la classification](figures/sup/iter_4_loss_cl.png)  
+La perte liée à la classification reste cohérente et stable tout au long de l'entraînement. Ce comportement est prometteur pour la convergence du modèle.
+
+![MSE pour la régression](figures/sup/iter_4_mse.png)  
+La MSE (Mean Squared Error) de la régression est stable pour l’ensemble des folds, ce qui reflète un apprentissage plus cohérent par rapport aux modèles précédents. Cette stabilité est un indicateur clé de l'amélioration du modèle.
+
+![Courbe d'accuracy](figures/sup/iter_4_acc.png)  
+Concernant l'accuracy de la classification, une convergence est observée vers un résultat stable d’environ 0.87. Les oscillations, bien que présentes, demeurent contrôlées, ce qui démontre une performance robuste. Le modèle atteint un F1-score de 0.90 pour la classification en trois classes.
+
+![Matrice de confusion](figures/sup/iter_4_mat.png)  
+La matrice de confusion confirme la capacité du modèle à classifier correctement les pays selon les trois classes. Cette étape marque une nette amélioration par rapport au modèle précédent.
+
+![Courbe de régression](figures/sup/iter_4_reg.png)  
+Le coefficient de détermination \( R^2 \) est satisfaisant à une valeur de 0.77. Ce résultat, bien qu'inférieur au \( R^2 \) de 0.87 atteint avec le modèle de baseline amélioré, constitue une amélioration notable par rapport aux performances du modèle à deux classes. La classification semble donc influencer les performances de la régression, ce qui pourrait expliquer cette différence.
+
+Enfin, en comparaison avec le modèle précédent, le modèle actuel est plus léger avec environ 4 000 paramètres, contre 68 300 pour le modèle précédent nécessitant des couches supplémentaires pour la régression. Le passage à une classification plus granulaire semble contribuer à une meilleure compréhension des performances, permettant au modèle d’ajuster son échelle de prédiction de manière plus efficace.
 
 ## 9. Conclusion
+Les travaux menés dans le cadre du projet **Predictus Olympiae** ont mis en évidence la nature **complexe** et **multidimensionnelle** des performances olympiques. L’analyse des facteurs socio-économiques, démographiques et climatiques souligne à quel point ces différents axes interagissent subtilement pour influencer le succès sportif d’une nation. Les résultats montrent que les **modèles ensemblistes** (Forêt Aléatoire, XGBoost) et les **réseaux de neurones** enrichis par des attributs climatiques parviennent à expliquer une part significative de la variance des performances, tout en restant perfectibles.  
+
+Les **difficultés** persistent notamment pour les pays atypiques, disposant parfois de moins de ressources, de données incomplètes ou d’un contexte historique particulier. Dans ces cas, la robustesse et la généralisation des modèles peuvent être renforcées en intégrant des indicateurs plus précis, comme les dépenses nationales en infrastructures sportives, les politiques publiques de formation des athlètes ou encore la spécialisation historique de certains pays dans des disciplines spécifiques.  
+
+À l’issue de ce projet, plusieurs **perspectives** de recherche et de développement émergent :  
+- **Analyses par discipline** : Une étude plus fine permettrait de comparer les facteurs clés de réussite selon les sports (natation, athlétisme, gymnastique, etc.), de comprendre les spécificités de chaque discipline et d’identifier des pistes d’optimisation ciblées.  
+- **Historique étendu** : L’inclusion de données antérieures à 1992 et l’analyse des Jeux Olympiques d’hiver élargiraient la portée du modèle à des environnements sportifs différents, testant sa robustesse dans des contextes multiples.  
+- **Approches évolutives** : L’intégration de méthodes de modélisation du temps (ex. séries temporelles) pourrait capturer les tendances de progression ou de déclin d’un pays sur plusieurs décennies, offrant une vision dynamique des performances olympiques.  
+- **Techniques de deep learning avancées** : Des architectures plus complexes (transformers, graphes neuronaux, etc.) permettraient d’explorer de nouvelles dimensions d’information et d’augmenter la capacité du modèle à gérer des jeux de données de grande ampleur.  
+- **Facteurs culturels et sociaux** : La prise en compte d’informations qualitatives relatives à la popularité des sports dans chaque pays, aux traditions sportives ou aux dispositifs de soutien aux athlètes, viendrait enrichir la compréhension des disparités.  
+
+En somme, ce travail préliminaire apporte un éclairage sur les **déterminants multifactoriels** des performances aux Jeux Olympiques. Les modèles développés, bien qu’encourageants, peuvent être optimisés et complétés par de nouvelles sources de données ainsi que par des méthodologies plus avancées. L’objectif final demeure de mieux saisir la dynamique d’une compétition sportive mondiale et de fournir des outils d’aide à la décision pour comprendre, analyser et projeter les performances futures des nations.
 
 ## 10. Références
 
 [1] https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_medals.csv
 
-## 10. Annexes
-### 10.1 Journal de Travail
+[2] https://www.gapminder.org/data/documentation/gd005/
 
+[3] https://www.gapminder.org/data/documentation/gd008/
+
+[4] https://www.gapminder.org/data/documentation/gd001/
+
+[5] https://www.gapminder.org/data/documentation/gd003/
